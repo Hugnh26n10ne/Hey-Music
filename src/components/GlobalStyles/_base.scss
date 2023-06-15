@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto&display=swap');
 
+:root {
+    --primary-color-search: #ffffff;
+    --primary-color-border-search: #d9d9d9;
+}
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 html {
@@ -9,6 +15,10 @@ html {
 body {
     font-family: $primary-font;
     font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 400;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    color: $primary-color-text;
+    background: $primary-color-bg;
 }
