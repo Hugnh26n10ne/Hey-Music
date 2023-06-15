@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
 body {
     font-family: $primary-font;
-    font-size: 20px;
-    line-height: 1;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
 }
