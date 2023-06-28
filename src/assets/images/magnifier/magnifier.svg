@@ -1,0 +1,37 @@
+<svg width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="25" height="21" fill="#F5F5F5"/>
+<g id="Trang chu" clip-path="url(#clip0_0_1)">
+<rect width="1440" height="3500" transform="translate(-437 -22)" fill="url(#paint0_linear_0_1)"/>
+<g id="header-black">
+<g id="header" filter="url(#filter0_d_0_1)">
+<rect x="-437" y="-22" width="1440" height="70" fill="#550279"/>
+</g>
+<g id="Search">
+<rect id="Rectangle 2" x="-15.5" y="-6.5" width="599" height="34" rx="17" fill="white" stroke="#D9D9D9"/>
+<g id="kinh-lup">
+<path id="Ellipse 1" d="M17.0449 8.9657C17.0449 13.3619 13.4683 16.9314 9.04921 16.9314C4.63017 16.9314 1.05353 13.3619 1.05353 8.9657C1.05353 4.56951 4.63017 1 9.04921 1C13.4683 1 17.0449 4.56951 17.0449 8.9657Z" stroke="#ACAAAA" stroke-width="2"/>
+<path id="Line 1" d="M15.8402 14.3477L23.2415 20" stroke="#ACAAAA" stroke-width="2" stroke-linecap="round"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="-441" y="-26" width="1448" height="78" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_0_1" x1="0" y1="0" x2="2463.07" y2="1013.38" gradientUnits="userSpaceOnUse">
+<stop stop-color="#76009F"/>
+<stop offset="1" stop-color="#43006B"/>
+</linearGradient>
+<clipPath id="clip0_0_1">
+<rect width="1440" height="3500" fill="white" transform="translate(-437 -22)"/>
+</clipPath>
+</defs>
+</svg>
