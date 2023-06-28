@@ -89,6 +89,18 @@ body {
     font-style: normal;
     font-weight: 400;
     text-rendering: optimizeSpeed;
-    color: $primary-color-text;
+    color: $text-white;
     background: $primary-color-bg;
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: $text-black;
+    text-decoration: none;
 }

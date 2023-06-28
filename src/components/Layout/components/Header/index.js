@@ -1,19 +1,38 @@
 import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner, faBell } from '@fortawesome/free-solid-svg-icons';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 const cx = classNames.bind(styles);
+
 function Header() {
     return (
         <header className={cx('wrapper')}>
-            <div className={cx('header-left')}>
+            <div className={cx('logo')}>
                 <img src={images.logo1} alt="logo" />
                 <div className={cx('logo-text')}>Hey Music</div>
             </div>
-            <div className={cx('header-center')}>
-                <div className={cx('search', '')}>
-                    <ion-icon name="search-outline"></ion-icon>
-                    <input className={cx('')} placeholder="Tìm kiếm bài hát theo ý thích ..."></input>
-                    <span className={cx('btn-close')}>&times;</span>
+            <div className={cx('search')}>
+                <div className={cx('box', '')}>
+                    <input
+                        className={cx('')}
+                        placeholder="Tìm kiếm bài hát theo ý thích ..."
+                        spellCheck={false}
+                    ></input>
+                    <Tippy content="Tìm kiếm">
+                        <button className={cx('search-btn')}>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+                    </Tippy>
+                    <Tippy content="Xóa">
+                        <button className={cx('clear')}>
+                            <span className={cx('btn-close')}>&times;</span>
+                        </button>
+                    </Tippy>
+                    <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                 </div>
                 <ul className={cx('dropdown')}>
                     <li className={cx('dropdown-item')}>
@@ -73,8 +92,9 @@ function Header() {
                     </div>
                 </ul>
             </div>
-            <div className={cx('header-right')}>
-                <i data-count="0" className={cx('notification', 'notify', 'fa fa-bell')} alt="notification"></i>
+            <div className={cx('actions')}>
+                <FontAwesomeIcon icon={faBell} className={cx('notification', 'notify', 'show-count')} data-count="0" />
+                {/* <img src={images.notification} alt="notification" /> */}
                 <div className={cx('btn-login')}>
                     <button>Đăng nhập</button>
                 </div>

@@ -18,24 +18,20 @@ $primary-color-bg: linear-gradient(135deg, #76009f 0%, #43006b 100%) no-repeat;
 
 // --> Color text
 
-$primary-color-text: #ffffff;
-$secondary-color-text: #000000;
+$text-white: #ffffff;
+$text-black: #000000;
+$text-gray: #696767;
+$text-red: #ff0000;
+$text-green: #085f00;
 
-// Header
+$gray: #696767;
+$black: #000000;
+$red: #ff0000;
+$gren: #085f00;
+$back-gray: #d9d9d9;
 
-$primary-color-bg-header: #550279;
-
-// Header --> Logo
-
-// Header --> Search
-$primary-color-text-search: #696767;
-$secondary-color-text-search: #000000;
-$third-color-text-search: #ff0000;
-$four-color-text-search: #085f00;
-
-$primary-color-bg-search: #ffffff;
-$secondary-color-bg-search: #000000;
-$third-color-bg-search: #eeeded;
-
-$primary-color-border-search: #d9d9d9;
-$primary-color-bg-btn: #fc9090;
+$bg-white: #ffffff;
+$bg-black: #000000;
+$bg-purple: #550279;
+$bg-light-gray: #eeeded;
+$bg-light-red: #fc9090;
