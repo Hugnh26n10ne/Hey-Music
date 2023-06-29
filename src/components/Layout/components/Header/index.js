@@ -1,14 +1,32 @@
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faBell } from '@fortawesome/free-solid-svg-icons';
-import Tippy from '@tippyjs/react';
+import { faSpinner, faBell, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
+import Account from '~/components/Account';
+import Song from '~/components/Song';
+import Button from '~/components/Button';
+import Notification from '~/components/Notification';
+import Message from '~/components/Message';
 
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+
 const cx = classNames.bind(styles);
 
 function Header() {
+    const [searchResults, setSearchResults] = useState([]);
+    const [notifyStatus, setNotifyStatus] = useState(false);
+    const [messStatus, setMessStatus] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSearchResults([]);
+        }, 0);
+    }, []);
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('logo')}>
@@ -16,88 +34,95 @@ function Header() {
                 <div className={cx('logo-text')}>Hey Music</div>
             </div>
             <div className={cx('search')}>
-                <div className={cx('box', '')}>
-                    <input
-                        className={cx('')}
-                        placeholder="Tìm kiếm bài hát theo ý thích ..."
-                        spellCheck={false}
-                    ></input>
-                    <Tippy content="Tìm kiếm">
+                <Tippy
+                    interactive={true}
+                    visible={searchResults.length > 0}
+                    render={(attrs) => (
+                        <div className={cx('search-result')} tabIndex={-1} {...attrs}>
+                            <PopperWrapper>
+                                <Song />
+                                <Song />
+                                <Song />
+                                <h4 className={cx('search-title')}>Account</h4>
+                                <Account />
+                                <Account />
+                                <Account />
+                                <div className={cx('more')}>
+                                    <a href="xemthem">Hiện tất cả kết quả "Value"</a>
+                                </div>
+                            </PopperWrapper>
+                        </div>
+                    )}
+                >
+                    <div className={cx('box', '')}>
+                        <input
+                            className={cx('')}
+                            placeholder="Tìm kiếm bạn bè hoặc bài hát theo ý thích ..."
+                            spellCheck={false}
+                        ></input>
                         <button className={cx('search-btn')}>
                             <ion-icon name="search-outline"></ion-icon>
                         </button>
-                    </Tippy>
-                    <Tippy content="Xóa">
                         <button className={cx('clear')}>
                             <span className={cx('btn-close')}>&times;</span>
                         </button>
-                    </Tippy>
-                    <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                </div>
-                <ul className={cx('dropdown')}>
-                    <li className={cx('dropdown-item')}>
-                        <h4 className={cx('dropdown_1-title')}>Trending</h4>
-                        <ul className={cx('dropdown_1')}>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <li className={cx('dropdown-item')}>
-                        <h4 className={cx('dropdown_1-title')}>Trending</h4>
-                        <ul className={cx('dropdown_1')}>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                            <li className={cx('dropdown_1-item')}>
-                                <div className={cx('item-name')}>
-                                    <ion-icon name="chevron-forward-outline" className={cx('item-icon')}></ion-icon>
-                                    <span className={cx('item-title')}>Making My Way</span>
-                                </div>
-                                <span className={cx('item-author')}>Sơn Tùng MTP</span>
-                            </li>
-                        </ul>
-                    </li>
-                    <div className={cx('more')}>
-                        <a href="xemthem">Xem thêm</a>
+
+                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                     </div>
-                </ul>
+                </Tippy>
             </div>
             <div className={cx('actions')}>
-                <FontAwesomeIcon icon={faBell} className={cx('notification', 'notify', 'show-count')} data-count="0" />
-                {/* <img src={images.notification} alt="notification" /> */}
-                <div className={cx('btn-login')}>
-                    <button>Đăng nhập</button>
-                </div>
+                <Tippy
+                    visible={notifyStatus}
+                    render={(attrs) => (
+                        <div className={cx('notification-result')} tabIndex={-1} {...attrs}>
+                            <PopperWrapper>
+                                <h4 className={cx('title')}>Thông báo</h4>
+                                <Notification active />
+                                <Notification />
+                                <div className={cx('more')}>
+                                    <a href="xemthem">Xem thêm</a>
+                                </div>
+                            </PopperWrapper>
+                        </div>
+                    )}
+                >
+                    <div onClick={() => setNotifyStatus(!notifyStatus)}>
+                        <Button type="icon" className="notification">
+                            <FontAwesomeIcon icon={faBell} className={cx('icon-notification', 'notify')} />
+                            <span className={cx('counter', 'show-count')}>2</span>
+                        </Button>
+                    </div>
+                </Tippy>
+                <Tippy
+                    visible={messStatus}
+                    render={(attrs) => (
+                        <div className={cx('message-result')} tabIndex={-1} {...attrs}>
+                            <PopperWrapper>
+                                <h4 className={cx('title')}>Thông báo</h4>
+                                <Message active />
+                                <Message />
+                                <div className={cx('more')}>
+                                    <a href="xemthem">Xem thêm</a>
+                                </div>
+                            </PopperWrapper>
+                        </div>
+                    )}
+                >
+                    <div onClick={() => setMessStatus(!messStatus)}>
+                        <Button type="icon" className="message">
+                            <FontAwesomeIcon icon={faEnvelope} className={cx('icon-message', 'mess')} />
+                            <span className={cx('counter', 'show-count')}>3</span>
+                        </Button>
+                    </div>
+                </Tippy>
+
+                <Button type="icon_text" className="info">
+                    <img className={cx('avatar')} src={images.avatar} alt="Avatar" />
+                    <span className={cx('name')}>ShaKaChju</span>
+                </Button>
+
+                <Button type="primary">Đăng nhập</Button>
             </div>
         </header>
     );

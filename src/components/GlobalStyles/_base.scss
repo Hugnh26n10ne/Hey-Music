@@ -91,6 +91,9 @@ body {
     text-rendering: optimizeSpeed;
     color: $text-white;
     background: $primary-color-bg;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
 }
 
 button,

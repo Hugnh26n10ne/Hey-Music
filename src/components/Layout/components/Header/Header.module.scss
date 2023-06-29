@@ -18,12 +18,14 @@
         align-items: center;
         gap: 25px;
         position: relative;
+        cursor: pointer;
         transition: all 0.3s ease;
     }
 
     .search {
         display: flex;
         justify-content: center;
+        position: relative;
     }
     .actions {
         height: 70px;
@@ -49,6 +51,10 @@
     }
 }
 
+.search,
+.search-result {
+    width: 600px;
+}
 .search {
     .box {
         display: flex;
@@ -83,133 +89,53 @@
         border-width: 1px;
         transition: all 0.3s ease;
     }
-    .dropdown {
-        &.active {
-            top: 63px;
-            opacity: 1;
-            visibility: visible;
-        }
-        opacity: 0;
-        top: 100vh;
-        visibility: hidden;
+}
 
-        @media (max-width: $primary-ipad-width) {
-            width: min(100% - 15px, 600px) !important;
-        }
-        left: 50%;
-        transform: translateX(-50%);
-        position: absolute;
-
-        background: $bg-white;
-        border-radius: 10px;
-        width: 600px;
-        max-height: 350px;
-        box-shadow: 0px 1px 2px rgba(1, 1, 1, 0.4);
+.search-result {
+    @media (max-width: $primary-mobile-width) {
+        width: max-content;
+    }
+    pointer-events: auto;
+    color: black;
+    .search-title {
+        padding-left: 9px;
+    }
+}
+.search-result,
+.notification-result,
+.message-result {
+    .more {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: flex;
+        justify-content: center;
         transition: all 0.3s ease;
-
-        .dropdown-item {
-            position: relative;
-            & ~ .dropdown-item::before {
-                content: '';
-                width: 95%;
-                height: 1px;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: rgba(0, 0, 0, 0.2);
+        a {
+            &:hover {
+                background-color: $bg-green;
+                color: $text-white;
             }
+            &:active {
+                background-color: $bg-dark-green;
+                color: $text-white;
+            }
+            color: $text-green;
+            padding: 5px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 10px;
-            transition: all 0.3s ease;
-
-            .dropdown_1-title {
-                padding: 5px 10px;
-                font: 600 18px $primary-font;
-                letter-spacing: 1.2px;
-                color: $text-black;
-            }
-            .dropdown_1 {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-
-                .dropdown_1-item {
-                    &:hover {
-                        background-color: $text-red;
-                        .item-name {
-                            ion-icon {
-                                color: $text-red;
-                            }
-                            .item-title {
-                                color: $text-red;
-                            }
-                        }
-                        .item-author {
-                            color: $text-red;
-                        }
-                    }
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: 5px 9px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-
-                    .item-name {
-                        display: flex;
-                        align-items: center;
-                        ion-icon {
-                            width: 18px;
-                            height: 18px;
-                            padding: 0 7px 0 0;
-                            color: $text-black;
-                        }
-                        .item-title {
-                            color: $text-black;
-                            font: 400 16px $primary-font;
-                        }
-                    }
-                    .item-author {
-                        padding-right: 10px;
-                        color: $text-black;
-                        font: 400 16px $primary-font;
-                    }
-                }
-            }
-        }
-        .more {
-            position: relative;
-            &::before {
-                content: '';
-                width: 95%;
-                height: 1px;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                background-color: rgba(0, 0, 0, 0.2);
-            }
-            display: flex;
-            justify-content: center;
-            transition: all 0.3s ease;
-
-            a {
-                color: $text-green;
-                padding: 5px;
-                text-decoration: underline;
-            }
+            text-align: center;
+            text-decoration: underline;
         }
     }
 }
-
 .box {
     .search-btn {
         background-color: transparent;
         border-radius: 20px 0 0 20px;
         order: 0;
         height: 100%;
-        padding: 0 10px 0 10px;
+        @media (min-width: $primary-ipad-width) {
+            padding: 0 10px 0 10px;
+        }
         &:active {
             background-color: rgba(22, 24, 25, 0.2);
         }
@@ -277,98 +203,147 @@
 }
 
 .actions {
-    .notification {
-        width: 25px;
-        height: 25px;
-        position: static;
+    .btn-notification {
+        width: 30px;
+        height: 30px;
+        background-color: transparent;
+        position: relative;
         cursor: pointer;
         transition: all 0.3s ease;
     }
+    .btn-message {
+        @extend .btn-notification;
+    }
+    .btn-info {
+        @extend .btn-notification;
+        width: 55px;
+        height: 55px;
+    }
+
     @media (max-width: $primary-mobile-width) {
         position: relative;
         left: 10px;
     }
+}
+.counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
 
-    .btn-login {
-        position: static;
-        @media (max-width: $primary-mobile-width) {
-            position: relative;
-            right: 10px;
-        }
-        button {
-            width: 117px;
-            height: 35px;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
+    width: 22px;
+    height: 22px;
+    line-height: 100%;
+    border: 2px transparent solid;
+    border-radius: 50%;
 
-            color: #ffffff;
-            text-align: center;
-            font: 700 16px $primary-font;
-            background-color: $bg-light-red;
-        }
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+
+    font-size: 20px;
+    font-weight: 400;
+    font-family: $secondary-font;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-dark-red;
+    color: $text-white;
+}
+.show-count {
+    transform: scale(1);
+    opacity: 1;
+}
+.notify {
+    animation: ring 1.5s ease;
+}
+@keyframes ring {
+    0% {
+        transform: rotate(35deg);
+    }
+    12.5% {
+        transform: rotate(-30deg);
+    }
+    25% {
+        transform: rotate(25deg);
+    }
+    37.5% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    62.5% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }
-.notification {
-    &::after {
-        content: attr(data-count);
-        position: absolute;
-        top: -15px;
-        right: -15px;
-        padding: 5px 8px;
-        line-height: 100%;
-        border: 2px #fff solid;
-        border-radius: 60px;
 
-        z-index: 10;
-        opacity: 0;
-        transform: scale(0.5);
-        transition: transform, opacity;
-        transition-duration: 0.3s;
-        transition-timing-function: ease-out;
+.icon-notification,
+.notification-result {
+    width: 400px;
+}
+.icon-notification {
+    width: 100%;
+    height: 100%;
+    color: $text-white;
+    &:active {
+        color: $text-dark-white;
+    }
+}
 
-        font-size: 12px;
-        font-weight: 600;
-        font-family: $secondary-font;
+.notification-result,
+.message-result {
+    @media (max-width: $primary-mobile-width) {
+        width: 200px;
+    }
+    pointer-events: auto;
+    color: black;
+    .title {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $bg-white;
-        color: $text-black;
+        font: 600 18px $primary-font;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
-    &.show-count::after {
-        transform: scale(1);
-        opacity: 1;
-    }
-    &.notify {
-        &::after {
-            animation: ring 1.5s ease;
-        }
-    }
-    @keyframes ring {
-        0% {
-            transform: rotate(35deg);
-        }
-        12.5% {
-            transform: rotate(-30deg);
-        }
-        25% {
-            transform: rotate(25deg);
-        }
-        37.5% {
-            transform: rotate(-20deg);
-        }
-        50% {
-            transform: rotate(15deg);
-        }
-        62.5% {
-            transform: rotate(-10deg);
-        }
-        75% {
-            transform: rotate(5deg);
-        }
-        100% {
-            transform: rotate(0deg);
-        }
+}
+
+.icon-message {
+    @extend .icon-notification;
+}
+
+.avatar {
+    @extend .icon-notification;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.name {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font: 400 16px $primary-font;
+}
+
+.btn-login {
+    span {
+        border: none;
+        cursor: pointer;
+
+        color: #ffffff;
+        text-align: center;
+        font: 400 16px $primary-font;
     }
 }

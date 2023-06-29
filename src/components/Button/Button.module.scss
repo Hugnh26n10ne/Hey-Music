@@ -1,0 +1,68 @@
+@import '../GlobalStyles/variables';
+.wrapper {
+    min-width: 127px;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-white;
+    @media (max-width: $primary-mobile-width) {
+        position: relative;
+    }
+    + .wrapper {
+        margin-left: 8px;
+    }
+}
+.primary {
+    width: 117px;
+    height: 35px;
+    border-radius: 20px;
+    background: $bg-light-red;
+
+    &:hover {
+        background-color: $bg-near-red;
+    }
+}
+.secondary {
+    width: 127px;
+    height: 24px;
+    background: $bg-violet;
+
+    &:hover {
+        background: $bg-near-violet;
+    }
+}
+
+.icon {
+    position: relative;
+}
+.notification {
+    width: 30px;
+    min-width: 30px;
+    padding: 0;
+    height: 30px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.message {
+    @extend .notification;
+}
+.icon_text {
+    @extend .icon;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: normal;
+    cursor: pointer;
+}
+
+.info {
+    @extend .notification;
+    width: 55px;
+    height: 65px;
+}

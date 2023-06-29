@@ -1,0 +1,41 @@
+@import '../GlobalStyles/variables';
+.wrapper {
+    &:hover {
+        background-color: $bg-light-red;
+        color: $text-white;
+        border-radius: 5px;
+    }
+    &:active {
+        background-color: $bg-dark-red;
+    }
+    @media (max-width: $primary-ipad-width) {
+        width: min(100%, 600px) !important;
+    }
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-white;
+    padding: 9px 0 9px 9px;
+    width: 600px;
+    max-height: 350px;
+    transition: all 0.3s ease;
+    .avatar {
+        height: 35px;
+        width: 35px;
+        border-radius: 50%;
+    }
+    .info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+.info {
+    .name {
+        font: 400 16px $primary-font;
+    }
+    .isCheck {
+        color: $bg-blue;
+    }
+}

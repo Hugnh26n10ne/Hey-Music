@@ -19,19 +19,30 @@ $primary-color-bg: linear-gradient(135deg, #76009f 0%, #43006b 100%) no-repeat;
 // --> Color text
 
 $text-white: #ffffff;
+$text-dark-white: #f3f3f3;
 $text-black: #000000;
 $text-gray: #696767;
 $text-red: #ff0000;
 $text-green: #085f00;
+$text-dark-green: #063d00;
 
 $gray: #696767;
 $black: #000000;
 $red: #ff0000;
-$gren: #085f00;
+$green: #085f00;
 $back-gray: #d9d9d9;
 
 $bg-white: #ffffff;
+$bg-light-white: #eeeded;
+$bg-dark-white: #f3f3f3;
 $bg-black: #000000;
 $bg-purple: #550279;
+$bg-violet: linear-gradient(135deg, #ce9ffc 0%, #7367f0 100%);
+$bg-near-violet: linear-gradient(135deg, #ab6bea 0%, #3929df 100%);
 $bg-light-gray: #eeeded;
 $bg-light-red: #fc9090;
+$bg-near-red: #f56767;
+$bg-dark-red: #f94e4ee8;
+$bg-blue: #1663ffe8;
+$bg-green: #085f00;
+$bg-dark-green: #063d00;
