@@ -1,0 +1,108 @@
+@import '../GlobalStyles//variables';
+
+.content {
+    width: 200px;
+    position: relative;
+    color: $text-black;
+    transition: all 0.3s ease;
+}
+.user {
+    color: $text-black;
+    padding-left: 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    .avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 7px;
+    }
+    .name {
+        font-size: 16px;
+        margin-right: 16px;
+    }
+    .isCheck {
+        color: $text-green;
+    }
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 4px;
+    margin-bottom: 8.5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    .menu-item {
+        color: $text-black;
+        padding-left: 15px;
+        font-size: 14px;
+        cursor: pointer;
+        &:hover {
+            background-color: $bg-light-white;
+            border-radius: 2px;
+        }
+    }
+}
+
+.isLogout {
+    color: $text-black;
+}
+.logout-content {
+    @extend .isLogout;
+}
+
+.content-friend {
+    width: 250px;
+}
+
+/*  Me */
+
+.user-me {
+    display: flex;
+    flex-direction: row;
+    padding: 3px 15px;
+    margin-bottom: 3px;
+}
+.menu-items__me {
+    gap: 0;
+    .menu-item__me {
+        padding: 5px 0 5px 15px;
+        margin-left: 0 !important;
+        align-items: start;
+    }
+}
+
+/*  Friend */
+.user-friend {
+    display: flex;
+    flex-direction: row;
+    padding: 3px 15px;
+}
+.boxs {
+    .box-name {
+        display: flex;
+        align-items: center;
+    }
+    .box-action {
+        @extend .box-name;
+        font-size: 11px;
+        gap: 4px;
+    }
+}
+.nameSound {
+    color: $text-red;
+}
+
+.menu-items__friend {
+    gap: 0;
+    .menu-item__friend {
+        padding: 5px 0 5px 15px;
+        margin-left: 0 !important;
+        align-items: start;
+    }
+}

@@ -1,41 +1,114 @@
 @import '../GlobalStyles/variables';
 
-.wrapper {
-    &.active {
-        color: $text-red;
+.notification-result {
+    .more {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        transition: all 0.3s ease;
+        a {
+            &:hover {
+                background-color: $bg-green;
+                color: $text-white;
+            }
+            &:active {
+                background-color: $bg-dark-green;
+                color: $text-white;
+            }
+            color: $text-green;
+            padding: 5px;
+            width: 100%;
+            text-align: center;
+            text-decoration: underline;
+        }
     }
-    &:hover {
-        background-color: $bg-light-white;
-        border-radius: 5px;
-    }
+}
+.notification-result {
+    width: 400px;
+}
+.icon-notification {
+    width: 100%;
+    height: 100%;
+    color: $text-white;
     &:active {
-        background-color: $bg-dark-white;
+        color: $text-dark-white;
     }
-    @media (max-width: $primary-ipad-width) {
-        width: min(100%, 400px) !important;
+}
+
+.notification-result {
+    @media (max-width: $primary-mobile-width) {
+        width: 200px;
     }
-    cursor: pointer;
+    pointer-events: auto;
+    color: black;
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 600 18px $primary-font;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
+.counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    width: 22px;
+    height: 22px;
+    line-height: 100%;
+    border: 2px transparent solid;
+    border-radius: 50%;
+
+    z-index: 10;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+
+    font-size: 20px;
+    font-weight: 400;
+    font-family: $secondary-font;
     display: flex;
     align-items: center;
-    gap: 10px;
-    background: $bg-white;
-    padding: 9px;
-    width: 400px;
-    max-height: 350px;
-    transition: all 0.3s ease;
-    .seen,
-    .noSeen {
-        width: 15px;
+    justify-content: center;
+    background-color: $bg-dark-red;
+    color: $text-white;
+}
+.show-count {
+    transform: scale(1);
+    opacity: 1;
+}
+.notify {
+    animation: ring 1.5s ease;
+}
+@keyframes ring {
+    0% {
+        transform: rotate(35deg);
     }
-    .seen {
-        color: $bg-dark-red;
-        font-size: 12px;
+    12.5% {
+        transform: rotate(-30deg);
     }
-
-    .content {
-        width: 85%;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+    25% {
+        transform: rotate(25deg);
+    }
+    37.5% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    62.5% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 }

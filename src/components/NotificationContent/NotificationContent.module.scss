@@ -1,0 +1,41 @@
+@import '../GlobalStyles/variables';
+
+.wrapper {
+    &.active {
+        color: $text-red;
+    }
+    &:hover {
+        background-color: $bg-light-white;
+        border-radius: 5px;
+    }
+    &:active {
+        background-color: $bg-dark-white;
+    }
+    @media (max-width: $primary-ipad-width) {
+        width: min(100%, 400px) !important;
+    }
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: $bg-white;
+    padding: 9px;
+    width: 400px;
+    max-height: 350px;
+    transition: all 0.3s ease;
+    .seen,
+    .noSeen {
+        width: 15px;
+    }
+    .seen {
+        color: $bg-dark-red;
+        font-size: 12px;
+    }
+
+    .content {
+        width: 85%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
