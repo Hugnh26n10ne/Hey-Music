@@ -6,6 +6,7 @@
     color: $text-black;
     transition: all 0.3s ease;
 }
+
 .user {
     color: $text-black;
     padding-left: 15px;
@@ -26,7 +27,7 @@
         margin-right: 16px;
     }
     .isCheck {
-        color: $text-green;
+        color: $bg-blue;
     }
 }
 
@@ -38,6 +39,9 @@
     margin-bottom: 8.5px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     .menu-item {
+        min-width: auto;
+        background-color: $bg-white;
+        border-radius: 0;
         color: $text-black;
         padding-left: 15px;
         font-size: 14px;
@@ -50,10 +54,12 @@
 }
 
 .isLogout {
+    width: 17.452px;
+    height: 18px;
     color: $text-black;
 }
 .logout-content {
-    @extend .isLogout;
+    color: $text-black;
 }
 
 .content-friend {

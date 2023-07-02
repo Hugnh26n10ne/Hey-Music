@@ -1,0 +1,19 @@
+@import '../GlobalStyles/variables';
+
+.upload {
+    width: 40px;
+    min-width: 30px;
+    padding: 0;
+    height: 40px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.icon {
+    width: 100%;
+    height: 100%;
+    color: $text-white;
+    g {
+        fill: $text-white;
+    }
+}

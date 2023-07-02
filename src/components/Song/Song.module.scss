@@ -16,12 +16,17 @@
     }
     cursor: pointer;
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 10px;
     background: $bg-white;
     padding: 9px 0 9px 9px;
     width: 600px;
     max-height: 350px;
+    min-width: auto;
+    margin-left: 0 !important;
+    border-radius: 0;
+
     transition: all 0.3s ease;
     .arrow-right {
         color: $bg-dark-red;

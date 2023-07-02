@@ -1,1 +1,29 @@
 @import '../GlobalStyles//variables';
+
+// Button nav
+.btn-nav {
+    background-color: transparent;
+}
+
+// MenuItem
+
+.menu-list {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+}
+.content {
+    width: 100%;
+    background: $bg-white;
+    border-radius: 5px;
+    .item-title {
+        margin: 0;
+    }
+}
+.item-title {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

@@ -1,5 +1,32 @@
 @import '../GlobalStyles/variables';
 
+.btn-notification {
+    min-width: auto;
+    padding: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.notification-result {
+    width: 400px;
+}
+.notification-result {
+    @media (max-width: $primary-mobile-width) {
+        width: 200px;
+    }
+    pointer-events: auto;
+    color: black;
+    .title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font: 600 18px $primary-font;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+}
+
 .notification-result {
     .more {
         border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -24,31 +51,13 @@
         }
     }
 }
-.notification-result {
-    width: 400px;
-}
+
 .icon-notification {
     width: 100%;
     height: 100%;
     color: $text-white;
     &:active {
         color: $text-dark-white;
-    }
-}
-
-.notification-result {
-    @media (max-width: $primary-mobile-width) {
-        width: 200px;
-    }
-    pointer-events: auto;
-    color: black;
-    .title {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font: 600 18px $primary-font;
-        padding: 0 0 10px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 }
 

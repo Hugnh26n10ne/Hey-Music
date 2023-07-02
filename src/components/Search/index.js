@@ -11,14 +11,27 @@ import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Search() {
+function Search({ items = [] }) {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResults([]);
+            setSearchResults([1, 2, 3]);
         }, 0);
     }, []);
+
+    const renderSongResults = () => {
+        const data = items[0];
+        return data.song.map((data, index) => {
+            return <Song key={index} data={data} />;
+        });
+    };
+    const renderAccountResults = () => {
+        const data = items[1];
+        return data.user.map((data, index) => {
+            return <Account key={index} data={data} />;
+        });
+    };
 
     return (
         <Tippy
@@ -27,13 +40,9 @@ function Search() {
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex={-1} {...attrs}>
                     <PopperWrapper>
-                        <Song />
-                        <Song />
-                        <Song />
+                        {renderSongResults()}
                         <h4 className={cx('search-title')}>Account</h4>
-                        <Account />
-                        <Account />
-                        <Account />
+                        {renderAccountResults()}
                         <div className={cx('more')}>
                             <a href="xemthem">Hiện tất cả kết quả "Value"</a>
                         </div>
@@ -41,9 +50,9 @@ function Search() {
                 </div>
             )}
         >
-            <div className={cx('box', '')}>
+            <div className={cx('box')}>
                 <input
-                    className={cx('')}
+                    className={cx('search-input')}
                     placeholder="Tìm kiếm bạn bè hoặc bài hát theo ý thích ..."
                     spellCheck={false}
                 ></input>

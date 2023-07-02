@@ -40,6 +40,8 @@
 .icon {
     position: relative;
 }
+
+// notification
 .notification {
     width: 30px;
     min-width: 30px;
@@ -49,6 +51,8 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+
+// message
 .message {
     @extend .notification;
 }
@@ -61,11 +65,13 @@
     cursor: pointer;
 }
 
+// info
 .info {
     @extend .notification;
     width: 55px;
     height: 65px;
 }
+
 .logout {
     &:hover {
         background-color: $bg-light-white;
@@ -80,4 +86,18 @@
     padding: 10.5px 0 9px 15px;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background-color: transparent;
+}
+
+// nav
+
+.btn-nav {
+    @media (min-width: $primary-ipad-width) {
+        width: 0;
+    }
+
+    background-color: transparent;
+    padding: 0;
+    width: 32px;
+    min-width: 0;
+    font-size: 32px;
 }

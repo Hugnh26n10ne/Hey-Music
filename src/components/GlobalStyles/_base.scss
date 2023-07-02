@@ -88,6 +88,7 @@ body {
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
+    // overflow: hidden auto;
     text-rendering: optimizeSpeed;
     color: $text-white;
     background: $primary-color-bg;
@@ -106,4 +107,16 @@ input,
 a[href] {
     color: $text-black;
     text-decoration: none;
+}
+
+// Custom Tooltip Tippy
+
+.tippy-box {
+    background-color: $bg-black-gray;
+    .tippy-content {
+        font-weight: 400;
+    }
+    .tippy-arrow {
+        color: $bg-black-gray;
+    }
 }

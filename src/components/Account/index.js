@@ -2,20 +2,21 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+import Button from '~/components/Button';
 import styles from './Account.module.scss';
-import images from '~/assets/images';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Account() {
+function Account({ data = [] }) {
     return (
-        <div className={cx('wrapper')}>
-            <img className={cx('avatar')} src={images.avatar} alt="" />
+        <Button type="icon_text" to={data.to} className={cx('wrapper')}>
+            <Image className={cx('avatar')} src={data?.avatar} alt="" />
             <div className={cx('info')}>
-                <h5 className={cx('name')}>ShaKaChju</h5>
-                <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} />
+                <h5 className={cx('name')}>{data?.name}</h5>
+                {data.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>}
             </div>
-        </div>
+        </Button>
     );
 }
 

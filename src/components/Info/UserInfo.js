@@ -1,40 +1,50 @@
 import classNames from 'classnames/bind';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import images from '~/assets/images';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
+import Image from '~/components/Image';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
 import styles from './Info.module.scss';
+import { SignOutIcon } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
 
-function UserInfo({ attrs }) {
+function UserInfo({ attrs, data = [], info = [] }) {
+    const renderUserInfo = () => {
+        return data.map((data, index) => {
+            let isLevel = false;
+
+            if (info?.userLevel === 1) {
+                isLevel = true;
+            } else if (info?.userLevel === 0) {
+                isLevel = info?.userLevel === data?.level;
+            }
+
+            if (isLevel) {
+                return (
+                    <Button to={data?.to} type="icon_text" key={index} className={cx('menu-item', 'menu-item__me')}>
+                        {data?.title}
+                    </Button>
+                );
+            } else {
+                return <></>;
+            }
+        });
+    };
+
     return (
         <div className={cx('content')} tabIndex={-1} {...attrs}>
             <PopperWrapper>
                 <div className={cx('menu')}>
                     <Button to="/user" type="icon_text" className={cx('user', 'user-me')}>
-                        <img className={cx('avatar')} src={images.avatar} alt="" />
-                        <p className={cx('name')}>ShaKaChju</p>
-                        <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} />
+                        <Image className={cx('avatar')} src={info.avatar} alt="" />
+                        <p className={cx('name')}>{info.name}</p>
+                        {info.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>}
                     </Button>
-                    <div className={cx('menu-items', 'menu-items__me')}>
-                        <Button to="/info" type="icon_text" className={cx('menu-item', 'menu-item__me')}>
-                            Xem thông tin tài khoản
-                        </Button>
-                        <Button to="/upload" type="icon_text" className={cx('menu-item', 'menu-item__me')}>
-                            Tải lên
-                        </Button>
-                        <Button to="/changeTheme" type="icon_text" className={cx('menu-item', 'menu-item__me')}>
-                            Đổi nền trắng
-                        </Button>
-                        <Button to="/setting" type="icon_text" className={cx('menu-item', 'menu-item__me')}>
-                            Cài đặt
-                        </Button>
-                    </div>
+                    <div className={cx('menu-items', 'menu-items__me')}>{renderUserInfo()}</div>
                     <Button to="/logout" type="icon_text" className="logout">
-                        <FontAwesomeIcon icon={faSignOut} className={cx('isLogout')} />
+                        <SignOutIcon className={cx('isLogout')} />
                         <span className={cx('logout-content')}>Đăng xuất</span>
                     </Button>
                 </div>

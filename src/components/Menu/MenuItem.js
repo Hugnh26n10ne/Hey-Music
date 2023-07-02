@@ -5,15 +5,18 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ attrs, items = [] }) {
+function MenuItem({ data = [] }) {
+    const renderMenu = () => {
+        return data.map((data, index) => (
+            <Button key={index} to={data?.to} type="icon_text" rightIcon={data?.icon} className={cx('item-title')}>
+                <span className={cx('title')}>{data?.title}</span>
+            </Button>
+        ));
+    };
+
     return (
-        <div className={cx('nav')} tabIndex={-1} {...attrs}>
-            {items.map((item, index) => (
-                <Button key={index} to={item?.to} type="icon_text">
-                    <span className={cx('title')}>{item?.title}</span>
-                    {item?.icon}
-                </Button>
-            ))}
+        <div className={cx('menu-list')} tabIndex={-1}>
+            <div className={cx('content')}>{renderMenu()}</div>
         </div>
     );
 }

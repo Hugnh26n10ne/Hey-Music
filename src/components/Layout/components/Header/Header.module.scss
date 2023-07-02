@@ -1,5 +1,4 @@
 @import '../../../GlobalStyles/variables';
-@import '../DefaultStyles.scss';
 
 .wrapper {
     position: relative;
@@ -16,7 +15,13 @@
     .logo {
         display: flex;
         align-items: center;
+        flex-direction: row;
         gap: 25px;
+        min-width: auto;
+        padding: 0;
+        border-radius: 0;
+        font-size: 16px;
+        font-weight: 400;
         position: relative;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -25,7 +30,6 @@
     .search {
         display: flex;
         justify-content: center;
-        position: relative;
     }
     .actions {
         height: 70px;
@@ -53,12 +57,18 @@
 
 .search {
     width: 600px;
+    @media (max-width: ($primary-ipad-width + 35)) {
+        width: 400px;
+    }
+    @media (max-width: $primary-mobile-width) {
+        width: 0;
+    }
 }
 
 .actions {
     @media (max-width: $primary-mobile-width) {
-        position: relative;
         left: 10px;
+        gap: 30px !important;
     }
 }
 
@@ -83,7 +93,7 @@
         border: none;
         cursor: pointer;
 
-        color: #ffffff;
+        color: $text-white;
         text-align: center;
         font: 400 16px $primary-font;
     }

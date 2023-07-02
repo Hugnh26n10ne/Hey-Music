@@ -1,4 +1,7 @@
 const images = {
+    noImage0: require('~/assets/images/imageDefault/no-image.png'),
+    noImage1: require('~/assets/images/imageDefault/no-image-2.png'),
+    noImage2: require('~/assets/images/imageDefault/imageDefault.jpg'),
     logo1: require('~/assets/images/logo/logo-1.png'),
     logo2: require('~/assets/images/logo/logo-2.png'),
     avatar: require('~/assets/images/avatar/avatar.png'),

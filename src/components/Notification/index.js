@@ -10,18 +10,23 @@ import styles from './Notification.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Notification() {
+function Notification({ items = [] }) {
+    const renderNotifications = () => {
+        return items.map((data, index) => {
+            return <NotificationContent key={index} data={data} />;
+        });
+    };
+
     return (
-        <div>
+        <Button type="icon" to="/notification" className={cx('btn-notification')}>
             <Tippy
+                delay={[0, 500]}
                 interactive
-                visible={false}
                 render={(attrs) => (
                     <div className={cx('notification-result')} tabIndex={-1} {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('title')}>Thông báo</h4>
-                            <NotificationContent active />
-                            <NotificationContent />
+                            {renderNotifications()}
                             <div className={cx('more')}>
                                 <a href="xemthem">Xem thêm</a>
                             </div>
@@ -36,7 +41,7 @@ function Notification() {
                     </Button>
                 </div>
             </Tippy>
-        </div>
+        </Button>
     );
 }
 

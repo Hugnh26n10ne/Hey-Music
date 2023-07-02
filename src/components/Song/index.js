@@ -2,21 +2,22 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+import Button from '~/components/Button';
 import styles from './Song.module.scss';
-import images from '~/assets/images';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Song() {
+function Song({ data = [] }) {
     return (
-        <div className={cx('wrapper')}>
+        <Button type="icon_text" to={data.to} className={cx('wrapper')}>
             <FontAwesomeIcon className={cx('arrow-right')} icon={faChevronRight} />
-            <img className={cx('thumnail')} src={images.avatar} alt="" />
+            <Image className={cx('thumnail')} src={data?.avatar} alt={data?.author} />
             <div className={cx('info')}>
-                <h5 className={cx('name')}>Making My Way</h5>
-                <h5 className={cx('author')}>Sơn Tùng MTP</h5>
+                <h5 className={cx('name')}>{data?.name}</h5>
+                <h5 className={cx('author')}>{data?.author}</h5>
             </div>
-        </div>
+        </Button>
     );
 }
 

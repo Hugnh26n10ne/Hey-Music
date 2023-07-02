@@ -4,18 +4,18 @@ import { UserInfo } from '~/components/Info';
 import { FriendInfo } from '~/components/Info';
 import MenuItem from './MenuItem';
 
-function Menu({ children, type = '', items = [], ...menuProps }) {
+function Menu({ children, type = '', items = [], currentUser = [], ...menuProps }) {
     const Cmp = (attrs) => {
         if (type === 'user') {
-            return <UserInfo attrs={attrs} />;
+            return <UserInfo data={items} info={currentUser} />;
         } else if (type === '') {
             if (items.length > 0) {
-                return <MenuItem attrs={attrs} items={items} />;
+                return <MenuItem data={items} />;
             } else {
                 return '';
             }
         } else if (type === 'friend') {
-            return <FriendInfo attrs={attrs} />;
+            return <FriendInfo />;
         } else {
             return '';
         }
@@ -23,7 +23,7 @@ function Menu({ children, type = '', items = [], ...menuProps }) {
 
     return (
         <div>
-            <Tippy interactive visible={true} render={(attrs) => <Cmp attrs={attrs} />} {...menuProps}>
+            <Tippy interactive render={(attrs) => <Cmp attrs={attrs} />} {...menuProps}>
                 {children}
             </Tippy>
         </div>
