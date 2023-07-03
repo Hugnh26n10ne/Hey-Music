@@ -1,3 +1,5 @@
+import routesConfig from '~/config/routes';
+
 import { HeaderOnly } from '~/components/Layout';
 
 import Home from '~/pages/Home';
@@ -11,15 +13,15 @@ import Info from '~/pages/Info';
 import Upload from '~/pages/Upload';
 
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/talkshow', component: Talkshow },
-    { path: '/raraoke', component: Karaoke },
-    { path: '/podcast', component: Podcast },
-    { path: '/radio', component: Radio },
-    { path: '/library', component: Library, layout: null },
-    { path: '/@:nickname', component: Profile },
-    { path: '/@:nickname&id:id', component: Info, layout: HeaderOnly },
-    { path: '/upload', component: Upload, layout: HeaderOnly },
+    { path: routesConfig.home, component: Home },
+    { path: routesConfig.talkshow, component: Talkshow },
+    { path: routesConfig.karaoke, component: Karaoke },
+    { path: routesConfig.podcast, component: Podcast },
+    { path: routesConfig.radio, component: Radio },
+    { path: routesConfig.library, component: Library, layout: null },
+    { path: routesConfig.profile, component: Profile },
+    { path: routesConfig.info, component: Info, layout: HeaderOnly },
+    { path: routesConfig.upload, component: Upload, layout: HeaderOnly },
 ];
 const privateRoutes = [];
 

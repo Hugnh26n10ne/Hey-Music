@@ -7,6 +7,7 @@ import Button from '~/components/Button';
 import NotificationContent from '~/components/NotificationContent';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Notification.module.scss';
+import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ function Notification({ items = [] }) {
     };
 
     return (
-        <Button type="icon" to="/notification" className={cx('btn-notification')}>
+        <Button type="icon" to={routesConfig.notification} className={cx('btn-notification')}>
             <Tippy
                 delay={[0, 500]}
                 interactive

@@ -93,6 +93,7 @@
 .btn-nav {
     @media (min-width: $primary-ipad-width) {
         width: 0;
+        display: none;
     }
 
     background-color: transparent;

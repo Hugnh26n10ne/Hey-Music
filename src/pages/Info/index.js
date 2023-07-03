@@ -3,4 +3,3 @@ function Info() {
 }
 
 export default Info;
-<div>Info</div>;

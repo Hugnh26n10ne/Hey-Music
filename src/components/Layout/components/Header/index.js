@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 
+import routesConfig from '~/config/routes';
 import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
 import Search from '~/components/Search';
@@ -36,7 +37,7 @@ function Header() {
 
     const renderCurrentUserInfo = () => {
         return (
-            <Button type="icon_text" className="info" to="/user">
+            <Button type="icon_text" className="info" to="/@ShaKaChju">
                 <Image className={cx('avatar')} src={currentUserInfo?.avatar} alt="Avatar" fallback={images.noImage1} />
                 <span className={cx('name')}>{currentUserInfo?.name}</span>
             </Button>
@@ -67,19 +68,19 @@ function Header() {
                     avatar: images.avatar,
                     name: 'Making My Way',
                     author: 'Sơn Tùng MTP',
-                    to: '/sontungmtp',
+                    to: '/@sontungmtp',
                 },
                 {
                     avatar: images.avatar,
                     name: 'Making My Way',
                     author: 'Sơn Tùng MTP',
-                    to: '/sontungmtp',
+                    to: '/@sontungmtp',
                 },
                 {
                     avatar: images.avatar,
                     name: 'Making My Way',
                     author: 'Sơn Tùng MTP',
-                    to: '/sontungmtp',
+                    to: '/@sontungmtp',
                 },
             ],
         },
@@ -89,19 +90,19 @@ function Header() {
                     avatar: images.avatar,
                     name: 'ShaKaChju',
                     isReal: true,
-                    to: '/shakachju',
+                    to: '/@shakachju',
                 },
                 {
                     avatar: images.avatar,
                     name: 'Thư Sex',
                     isReal: false,
-                    to: '/thusex',
+                    to: '/@thusex',
                 },
                 {
                     avatar: images.avatar,
                     name: 'Quang mất trinh',
                     isReal: false,
-                    to: '/quangmattrinh',
+                    to: '/@quangmattrinh',
                 },
             ],
         },
@@ -109,7 +110,7 @@ function Header() {
 
     return (
         <header className={cx('wrapper')}>
-            <Button to="/" type="icon_text" className={cx('logo')}>
+            <Button to={routesConfig.home} type="icon_text" className={cx('logo')}>
                 <Image src={images.logo1} alt="logo" />
                 <div className={cx('logo-text')}>Hey Music</div>
             </Button>
@@ -123,19 +124,24 @@ function Header() {
                         <Tippy content="Upload" placement="bottom">
                             <Upload />
                         </Tippy>
-                        <Menu type="user" items={userMenu} currentUser={currentUserInfo} delay={[0, 500]}>
+                        <Menu
+                            type="user"
+                            items={userMenu}
+                            currentUser={currentUserInfo}
+                            delay={[0, 500]}
+                            hideOnClick={false}
+                        >
                             <div>{renderCurrentUserInfo()}</div>
                         </Menu>
-                        <Menu type="" placement="bottom-end">
-                            <Button type="icon_text" className="btn-nav">
-                                <FontAwesomeIcon icon={faBars} />
-                            </Button>
-                        </Menu>
+
+                        <Button type="icon_text" className="btn-nav">
+                            <FontAwesomeIcon icon={faBars} />
+                        </Button>
                     </>
                 ) : (
                     <>
                         <Upload />
-                        <Button type="primary" to="/login" className={cx('btn-login')}>
+                        <Button type="primary" to={routesConfig.login} className={cx('btn-login')}>
                             Đăng nhập
                         </Button>
                     </>

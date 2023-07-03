@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+import routesConfig from '~/config/routes';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Image from '~/components/Image';
 import images from '~/assets/images';
@@ -15,7 +16,7 @@ function FriendInfo({ attrs }) {
         <div className={cx('content', 'content-friend')} tabIndex={-1} {...attrs}>
             <PopperWrapper>
                 <div className={cx('menu')}>
-                    <Button to="/user" type="icon_text" className={cx('user', 'user-friend')}>
+                    <Button to={routesConfig.info} type="icon_text" className={cx('user', 'user-friend')}>
                         <Image className={cx('avatar')} src={images.avatarFriend} alt="" />
                         <div className={cx('boxs')}>
                             <span className={cx('box-name')}>
@@ -29,10 +30,18 @@ function FriendInfo({ attrs }) {
                         </div>
                     </Button>
                     <div className={cx('menu-items', 'menu-items__friend')}>
-                        <Button to="/info" type="icon_text" className={cx('menu-item', 'menu-item__friend')}>
+                        <Button
+                            to={routesConfig.info}
+                            type="icon_text"
+                            className={cx('menu-item', 'menu-item__friend')}
+                        >
                             Xem thông tin tài khoản
                         </Button>
-                        <Button to="/talkshow" type="icon_text" className={cx('menu-item', 'menu-item__friend')}>
+                        <Button
+                            to={routesConfig.talkshow}
+                            type="icon_text"
+                            className={cx('menu-item', 'menu-item__friend')}
+                        >
                             Talkshow
                         </Button>
                     </div>

@@ -5,7 +5,7 @@
 
 .search-result {
     @media (max-width: $primary-mobile-width) {
-        width: max-content;
+        width: calc(100vw - 15px);
     }
     pointer-events: auto;
     color: black;
@@ -191,6 +191,10 @@
         .btn-close {
             display: block;
         }
+    }
+    .loading {
+        position: absolute;
+        right: 32px;
     }
 }
 .search-btn {

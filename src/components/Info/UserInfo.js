@@ -6,6 +6,7 @@ import Image from '~/components/Image';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
 import styles from './Info.module.scss';
+import routesConfig from '~/config/routes';
 import { SignOutIcon } from '~/components/Icon';
 
 const cx = classNames.bind(styles);
@@ -37,13 +38,13 @@ function UserInfo({ attrs, data = [], info = [] }) {
         <div className={cx('content')} tabIndex={-1} {...attrs}>
             <PopperWrapper>
                 <div className={cx('menu')}>
-                    <Button to="/user" type="icon_text" className={cx('user', 'user-me')}>
+                    <Button to={routesConfig.profile} type="icon_text" className={cx('user', 'user-me')}>
                         <Image className={cx('avatar')} src={info.avatar} alt="" />
                         <p className={cx('name')}>{info.name}</p>
                         {info.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>}
                     </Button>
                     <div className={cx('menu-items', 'menu-items__me')}>{renderUserInfo()}</div>
-                    <Button to="/logout" type="icon_text" className="logout">
+                    <Button to={routesConfig.logout} type="icon_text" className="logout">
                         <SignOutIcon className={cx('isLogout')} />
                         <span className={cx('logout-content')}>Đăng xuất</span>
                     </Button>

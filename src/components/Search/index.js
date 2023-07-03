@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
+import { useState, useEffect, useRef } from 'react';
+import { useDebounce } from '~/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
+import { searchServices } from '~/apiServices';
 import Account from '~/components/Account';
 import Song from '~/components/Song';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -16,6 +18,7 @@ function Search({ items = [] }) {
     const [searchResults, setSearchResults] = useState([]);
     const [showResults, setShowResults] = useState(true);
     const [loading, setLoading] = useState(false);
+    const debouncedInput = useDebounce(searchValue, 500);
 
     const inputRef = useRef();
     const boxSearchRef = useRef();
@@ -23,21 +26,22 @@ function Search({ items = [] }) {
     const [isActive, setIsActive] = useState('');
 
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debouncedInput.trim()) {
             setSearchResults([]);
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((res) => res.json())
-            .then((res) => {
-                setSearchResults(res.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    }, [searchValue]);
+
+        const fetchApi = async () => {
+            setLoading(true);
+
+            const result = await searchServices.search(debouncedInput);
+
+            setSearchResults(result);
+
+            setLoading(false);
+        };
+        fetchApi();
+    }, [debouncedInput]);
 
     const handleActiveMobile = () => {
         if (window.matchMedia(`(max-width: 768px)`).matches) {
@@ -47,16 +51,22 @@ function Search({ items = [] }) {
         }
     };
 
-    const handleSearchOnBlur = () => {
-        setIsActive('');
+    const handleChangeInput = (e) => {
+        const searchValue = e.target.value;
+
+        if (searchValue.startsWith(' ')) {
+            return;
+        }
+        setSearchValue(searchValue);
     };
 
-    const handleChangeInput = (e) => {
-        if (e.which === 32 && e.target.selectionStart === 0) {
-            return false;
-        } else {
-            setSearchValue(e.target.value);
-        }
+    const handleSearchOnBlur = (e) => {
+        const currentTarget = e.currentTarget;
+        setTimeout(function () {
+            if (!currentTarget.contains(document.activeElement)) {
+                setIsActive('');
+            }
+        }, 0);
     };
 
     const handleSearchOnClick = (e) => {
@@ -70,7 +80,6 @@ function Search({ items = [] }) {
 
     const handleHideResults = () => {
         setShowResults(false);
-        handleSearchOnBlur();
     };
 
     const handleClear = () => {
@@ -92,6 +101,10 @@ function Search({ items = [] }) {
         });
     };
 
+    const renderMoreSearch = () => {
+        return `Hiện tất cả kết quả "${searchValue}"`;
+    };
+
     return (
         <Tippy
             interactive={true}
@@ -103,14 +116,14 @@ function Search({ items = [] }) {
                         <h4 className={cx('search-title')}>Account</h4>
                         {renderAccountResults()}
                         <div className={cx('more')}>
-                            <a href="xemthem">Hiện tất cả kết quả "Value"</a>
+                            <a href="xemthem">{renderMoreSearch()}</a>
                         </div>
                     </PopperWrapper>
                 </div>
             )}
             onClickOutside={handleHideResults}
         >
-            <div ref={boxSearchRef} className={cx('box', isActive)}>
+            <div ref={boxSearchRef} className={cx('box', isActive)} onBlur={handleSearchOnBlur}>
                 <input
                     ref={inputRef}
                     value={searchValue}
