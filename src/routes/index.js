@@ -7,6 +7,7 @@ import Podcast from '~/pages/Podcast';
 import Radio from '~/pages/Radio';
 import Library from '~/pages/Library';
 import Profile from '~/pages/Profile';
+import Info from '~/pages/Info';
 import Upload from '~/pages/Upload';
 
 const publicRoutes = [
@@ -16,7 +17,8 @@ const publicRoutes = [
     { path: '/podcast', component: Podcast },
     { path: '/radio', component: Radio },
     { path: '/library', component: Library, layout: null },
-    { path: '/profile', component: Profile, layout: HeaderOnly },
+    { path: '/@:nickname', component: Profile },
+    { path: '/@:nickname&id:id', component: Info, layout: HeaderOnly },
     { path: '/upload', component: Upload, layout: HeaderOnly },
 ];
 const privateRoutes = [];

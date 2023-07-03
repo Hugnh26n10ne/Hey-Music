@@ -43,6 +43,17 @@
 }
 
 .logo {
+    @media (max-width: $primary-ipad-width) {
+        flex-direction: column !important;
+        gap: 0px !important;
+        .logo-text {
+            font: 400 18px $primary-font !important;
+        }
+        img {
+            width: 35px !important;
+            height: 35px !important;
+        }
+    }
     .logo-text {
         color: #ffffff;
         text-align: center;

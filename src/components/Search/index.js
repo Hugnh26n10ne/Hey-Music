@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,13 +12,72 @@ import styles from './Search.module.scss';
 const cx = classNames.bind(styles);
 
 function Search({ items = [] }) {
+    const [searchValue, setSearchValue] = useState('');
     const [searchResults, setSearchResults] = useState([]);
+    const [showResults, setShowResults] = useState(true);
+    const [loading, setLoading] = useState(false);
+
+    const inputRef = useRef();
+    const boxSearchRef = useRef();
+
+    const [isActive, setIsActive] = useState('');
 
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResults([1, 2, 3]);
+        if (!searchValue.trim()) {
+            setSearchResults([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResults(res.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            });
+    }, [searchValue]);
+
+    const handleActiveMobile = () => {
+        if (window.matchMedia(`(max-width: 768px)`).matches) {
+            setIsActive('active');
+        } else {
+            setIsActive('');
+        }
+    };
+
+    const handleSearchOnBlur = () => {
+        setIsActive('');
+    };
+
+    const handleChangeInput = (e) => {
+        if (e.which === 32 && e.target.selectionStart === 0) {
+            return false;
+        } else {
+            setSearchValue(e.target.value);
+        }
+    };
+
+    const handleSearchOnClick = (e) => {
+        const currentTarget = e.currentTarget;
+        setTimeout(function () {
+            if (currentTarget.contains(document.activeElement)) {
+                setShowResults(true);
+            }
         }, 0);
-    }, []);
+    };
+
+    const handleHideResults = () => {
+        setShowResults(false);
+        handleSearchOnBlur();
+    };
+
+    const handleClear = () => {
+        setSearchValue('');
+        setSearchResults([]);
+        inputRef.current.focus();
+    };
 
     const renderSongResults = () => {
         const data = items[0];
@@ -27,8 +86,8 @@ function Search({ items = [] }) {
         });
     };
     const renderAccountResults = () => {
-        const data = items[1];
-        return data.user.map((data, index) => {
+        const data = searchResults;
+        return data.map((data, index) => {
             return <Account key={index} data={data} />;
         });
     };
@@ -36,7 +95,7 @@ function Search({ items = [] }) {
     return (
         <Tippy
             interactive={true}
-            visible={searchResults.length > 0}
+            visible={showResults && searchResults.length > 0}
             render={(attrs) => (
                 <div className={cx('search-result')} tabIndex={-1} {...attrs}>
                     <PopperWrapper>
@@ -49,21 +108,28 @@ function Search({ items = [] }) {
                     </PopperWrapper>
                 </div>
             )}
+            onClickOutside={handleHideResults}
         >
-            <div className={cx('box')}>
+            <div ref={boxSearchRef} className={cx('box', isActive)}>
                 <input
+                    ref={inputRef}
+                    value={searchValue}
                     className={cx('search-input')}
                     placeholder="Tìm kiếm bạn bè hoặc bài hát theo ý thích ..."
+                    onChange={handleChangeInput}
+                    onFocus={handleSearchOnClick}
                     spellCheck={false}
                 ></input>
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onClick={handleActiveMobile}>
                     <ion-icon name="search-outline"></ion-icon>
                 </button>
-                <button className={cx('clear')}>
-                    <span className={cx('btn-close')}>&times;</span>
-                </button>
+                {!!searchValue && !loading && (
+                    <button className={cx('clear')} onClick={handleClear}>
+                        <span className={cx('btn-close')}>&times;</span>
+                    </button>
+                )}
 
-                <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
             </div>
         </Tippy>
     );
