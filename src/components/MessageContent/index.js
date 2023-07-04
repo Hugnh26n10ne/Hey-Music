@@ -6,6 +6,8 @@ import styles from './MessageContent.module.scss';
 
 const cx = classNames.bind(styles);
 
+// Functions is not used now
+
 function MessageContent({ active = false }) {
     const classes = cx('wrapper', {
         active,

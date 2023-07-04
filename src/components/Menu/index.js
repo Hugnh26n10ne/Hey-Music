@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Tippy from '@tippyjs/react/headless';
 
 import { UserInfo } from '~/components/Info';
@@ -22,6 +23,8 @@ function Menu({ children, type = '', items = [], currentUser = [], ...menuProps 
     };
 
     return (
+        // Using a wrapper <div> tag around the reference element solves
+        // this by creating a new parentNode context.
         <div>
             <Tippy interactive render={(attrs) => <Cmp attrs={attrs} />} {...menuProps}>
                 {children}
@@ -29,5 +32,12 @@ function Menu({ children, type = '', items = [], currentUser = [], ...menuProps 
         </div>
     );
 }
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    type: PropTypes.string,
+    items: PropTypes.array,
+    currentUser: PropTypes.object,
+};
 
 export default Menu;

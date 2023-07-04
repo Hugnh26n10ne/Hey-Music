@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
+
 import { useState, useEffect, useRef } from 'react';
 import { useDebounce } from '~/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import { searchServices } from '~/apiServices';
+import { searchService } from '~/services';
 import Account from '~/components/Account';
 import Song from '~/components/Song';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
@@ -34,7 +35,7 @@ function Search({ items = [] }) {
         const fetchApi = async () => {
             setLoading(true);
 
-            const result = await searchServices.search(debouncedInput);
+            const result = await searchService.search(debouncedInput);
 
             setSearchResults(result);
 

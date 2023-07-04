@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
@@ -7,22 +8,24 @@ import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-function NotificationContent({ data = [] }) {
+function NotificationContent({ data = {} }) {
     const classes = cx('wrapper', { active: data.isSeen ? true : false });
 
     return (
-        <div>
-            <Button type="icon_text" to={data?.to} className={cx(classes)}>
-                <span className={cx('content')}>{data?.content}</span>
-                <span className={cx('time')}>{data?.time}</span>
-                {data.isSeen ? (
-                    <FontAwesomeIcon className={cx('seen')} icon={faCircle} />
-                ) : (
-                    <div className={cx('noSeen')}></div>
-                )}
-            </Button>
-        </div>
+        <Button type="icon_text" to={data?.to} className={cx(classes)}>
+            <span className={cx('content')}>{data?.content}</span>
+            <span className={cx('time')}>{data?.time}</span>
+            {data.isSeen ? (
+                <FontAwesomeIcon className={cx('seen')} icon={faCircle} />
+            ) : (
+                <div className={cx('noSeen')}></div>
+            )}
+        </Button>
     );
 }
+
+NotificationContent.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default NotificationContent;

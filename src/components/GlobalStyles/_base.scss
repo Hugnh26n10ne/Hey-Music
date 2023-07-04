@@ -7,6 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 *::before,
@@ -88,8 +89,10 @@ body {
     font-size: 1.6rem;
     font-style: normal;
     font-weight: 400;
-    // overflow: hidden auto;
+    overflow: hidden overlay;
     text-rendering: optimizeSpeed;
+    scroll-behavior: smooth;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     color: $text-white;
     background: $primary-color-bg;
     user-select: none;
@@ -107,6 +110,33 @@ input,
 a[href] {
     color: $text-black;
     text-decoration: none;
+}
+
+// Custom Scrollbar
+
+html *::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 0px;
+}
+html *::-webkit-scrollbar-button {
+    border-radius: 2px;
+}
+html *::-webkit-scrollbar-track:hover {
+    border-radius: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+html *::-webkit-scrollbar-track-piece:hover {
+    background-color: rgba(226, 226, 226, 0.2);
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: transparent;
+}
+html *::-webkit-scrollbar-thumb {
+    &:hover,
+    &:active {
+        background-color: rgba(128, 128, 128, 0.692);
+    }
 }
 
 // Custom Tooltip Tippy

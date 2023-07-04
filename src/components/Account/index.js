@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +9,7 @@ import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Account({ data = [] }) {
+function Account({ data = {} }) {
     return (
         <Button type="icon_text" to={data.to} className={cx('wrapper')}>
             <Image className={cx('avatar')} src={data?.avatar} alt="" />
@@ -19,5 +20,9 @@ function Account({ data = [] }) {
         </Button>
     );
 }
+
+Account.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default Account;

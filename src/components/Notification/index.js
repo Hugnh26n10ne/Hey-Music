@@ -1,3 +1,6 @@
+import config from '~/configs';
+import PropTypes from 'prop-types';
+
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,11 +10,10 @@ import Button from '~/components/Button';
 import NotificationContent from '~/components/NotificationContent';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Notification.module.scss';
-import routesConfig from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
-function Notification({ items = [] }) {
+function Notification({ items = [], ...passProps }) {
     const renderNotifications = () => {
         return items.map((data, index) => {
             return <NotificationContent key={index} data={data} />;
@@ -19,8 +21,10 @@ function Notification({ items = [] }) {
     };
 
     return (
-        <Button type="icon" to={routesConfig.notification} className={cx('btn-notification')}>
+        <Button type="icon" to={config.routes.notification} className={cx('btn-notification')}>
             <Tippy
+                {...passProps}
+                offset={[0, 28]}
                 delay={[0, 500]}
                 interactive
                 render={(attrs) => (
@@ -45,5 +49,9 @@ function Notification({ items = [] }) {
         </Button>
     );
 }
+
+Notification.propTypes = {
+    items: PropTypes.array.isRequired,
+};
 
 export default Notification;

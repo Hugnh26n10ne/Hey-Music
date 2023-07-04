@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -8,7 +10,7 @@ import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Song({ data = [] }) {
+function Song({ data = {} }) {
     return (
         <Button type="icon_text" to={data.to} className={cx('wrapper')}>
             <FontAwesomeIcon className={cx('arrow-right')} icon={faChevronRight} />
@@ -20,5 +22,9 @@ function Song({ data = [] }) {
         </Button>
     );
 }
+
+Song.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 
 export default Song;

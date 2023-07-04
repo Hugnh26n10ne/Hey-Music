@@ -1,6 +1,6 @@
 {
-    "short_name": "React App",
-    "name": "Create React App Sample",
+    "name": "Hey Music!",
+    "short_name": "Hey Music!",
     "icons": [
         {
             "src": "favicon.ico",
@@ -9,7 +9,9 @@
         }
     ],
     "start_url": ".",
+    "orientation": "portrait",
     "display": "standalone",
-    "theme_color": "#000000",
+    "description": "Hey Music!",
+    "theme_color": "#ffffff",
     "background_color": "#ffffff"
 }

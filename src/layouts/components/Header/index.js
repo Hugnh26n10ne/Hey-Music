@@ -1,7 +1,8 @@
+import config from '~/configs';
+
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
 
-import routesConfig from '~/config/routes';
 import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
 import Search from '~/components/Search';
@@ -110,7 +111,7 @@ function Header() {
 
     return (
         <header className={cx('wrapper')}>
-            <Button to={routesConfig.home} type="icon_text" className={cx('logo')}>
+            <Button to={config.routes.home} type="icon_text" className={cx('logo')}>
                 <Image src={images.logo1} alt="logo" />
                 <div className={cx('logo-text')}>Hey Music</div>
             </Button>
@@ -141,7 +142,7 @@ function Header() {
                 ) : (
                     <>
                         <Upload />
-                        <Button type="primary" to={routesConfig.login} className={cx('btn-login')}>
+                        <Button type="primary" to={config.routes.login} className={cx('btn-login')}>
                             Đăng nhập
                         </Button>
                     </>

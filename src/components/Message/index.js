@@ -10,6 +10,8 @@ import styles from './Message.module.scss';
 
 const cx = classNames.bind(styles);
 
+// Functions is not used now
+
 function Message() {
     return (
         <div>
