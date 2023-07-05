@@ -1,13 +1,13 @@
 @import '../GlobalStyles//variables';
 
-.content {
+.wrapper {
     width: 200px;
     position: relative;
     color: $text-black;
     transition: all 0.3s ease;
 }
 
-.user {
+.header {
     color: $text-black;
     padding-left: 15px;
     width: 100%;
@@ -21,6 +21,11 @@
         height: 35px;
         border-radius: 50%;
         margin-right: 7px;
+    }
+    .title-name {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
     }
     .name {
         font-size: 16px;
@@ -53,6 +58,15 @@
     }
 }
 
+.menu-actions {
+    gap: 0;
+    .action-item {
+        padding: 5px 0 5px 15px;
+        margin-left: 0 !important;
+        align-items: start;
+    }
+}
+
 .isLogout {
     width: 17.452px;
     height: 18px;
@@ -62,53 +76,32 @@
     color: $text-black;
 }
 
-.content-friend {
-    width: 250px;
-}
-
 /*  Me */
 
-.user-me {
+.btn-currentUser {
     display: flex;
     flex-direction: row;
     padding: 3px 15px;
     margin-bottom: 3px;
 }
-.menu-items__me {
-    gap: 0;
-    .menu-item__me {
-        padding: 5px 0 5px 15px;
-        margin-left: 0 !important;
-        align-items: start;
-    }
-}
 
 /*  Friend */
-.user-friend {
+
+.friendInfo {
+    width: 250px;
+}
+.btn-friend {
     display: flex;
     flex-direction: row;
     padding: 3px 15px;
 }
-.boxs {
-    .box-name {
-        display: flex;
-        align-items: center;
-    }
-    .box-action {
-        @extend .box-name;
+.titles {
+    .title-action {
+        @extend .title-name;
         font-size: 11px;
         gap: 4px;
     }
 }
 .nameSound {
     color: $text-red;
-}
-
-.menu-items__friend {
-    gap: 0;
-    .menu-item__friend {
-        padding: 5px 0 5px 15px;
-        margin-left: 0 !important;
-        align-items: start;
-    }
 }

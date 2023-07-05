@@ -1,21 +1,22 @@
-import config from '~/configs';
 import PropTypes from 'prop-types';
+import config from '~/configs';
 
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 import Image from '~/components/Image';
-import { Wrapper as PopperWrapper } from '~/components/Popper';
 import Button from '~/components/Button';
-import styles from './Info.module.scss';
+import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { SignOutIcon } from '~/components/Icon';
+
+import styles from './Info.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserInfo({ attrs, data = [], info = [] }) {
-    const renderUserInfo = () => {
-        return data.map((data, index) => {
+function CurrentUserInfo({ attrs, menu = [], info = {} }) {
+    const renderCurrentUserInfo = () => {
+        return menu.map((data, index) => {
             let isLevel = false;
 
             if (info?.userLevel === 1) {
@@ -26,7 +27,7 @@ function UserInfo({ attrs, data = [], info = [] }) {
 
             if (isLevel) {
                 return (
-                    <Button to={data?.to} type="icon_text" key={index} className={cx('menu-item', 'menu-item__me')}>
+                    <Button to={data?.to} type="icon-text" key={index} className={cx('menu-item', 'action-item')}>
                         {data?.title}
                     </Button>
                 );
@@ -36,17 +37,24 @@ function UserInfo({ attrs, data = [], info = [] }) {
         });
     };
 
+    const handleIsReal = () =>
+        info.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>;
+
     return (
-        <div className={cx('content')} tabIndex={-1} {...attrs}>
+        <div className={cx('wrapper')} tabIndex={-1} {...attrs}>
             <PopperWrapper>
                 <div className={cx('menu')}>
-                    <Button to={config.routes.profile} type="icon_text" className={cx('user', 'user-me')}>
+                    <Button to={config.routes.profile} type="icon-text" className={cx('header', 'btn-currentUser')}>
                         <Image className={cx('avatar')} src={info.avatar} alt="" />
-                        <p className={cx('name')}>{info.name}</p>
-                        {info.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>}
+                        <span className={cx('titles')}>
+                            <span className={cx('title-name')}>
+                                <p className={cx('name')}>{info.name}</p>
+                                {handleIsReal()}
+                            </span>
+                        </span>
                     </Button>
-                    <div className={cx('menu-items', 'menu-items__me')}>{renderUserInfo()}</div>
-                    <Button to={config.routes.logout} type="icon_text" className="logout">
+                    <div className={cx('menu-items', 'menu-actions')}>{renderCurrentUserInfo()}</div>
+                    <Button to={config.routes.logout} type="icon-text" className="logout">
                         <SignOutIcon className={cx('isLogout')} />
                         <span className={cx('logout-content')}>Đăng xuất</span>
                     </Button>
@@ -56,9 +64,9 @@ function UserInfo({ attrs, data = [], info = [] }) {
     );
 }
 
-UserInfo.propTypes = {
-    data: PropTypes.array,
+CurrentUserInfo.propTypes = {
+    menu: PropTypes.array,
     info: PropTypes.object,
 };
 
-export default UserInfo;
+export default CurrentUserInfo;

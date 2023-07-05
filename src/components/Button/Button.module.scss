@@ -56,7 +56,7 @@
 .message {
     @extend .notification;
 }
-.icon_text {
+.icon-text {
     @extend .icon;
     display: flex;
     flex-direction: column;

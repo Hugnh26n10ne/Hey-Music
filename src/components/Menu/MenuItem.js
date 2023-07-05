@@ -6,10 +6,10 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ data = [] }) {
+function MenuItem({ menu = [] }) {
     const renderMenu = () => {
-        return data.map((data, index) => (
-            <Button key={index} to={data?.to} type="icon_text" rightIcon={data?.icon} className={cx('item-title')}>
+        return menu.map((data, index) => (
+            <Button key={index} to={data?.to} type="icon-text" rightIcon={data?.icon} className={cx('item-title')}>
                 <span className={cx('title')}>{data?.title}</span>
             </Button>
         ));
@@ -23,7 +23,7 @@ function MenuItem({ data = [] }) {
 }
 
 MenuItem.propTypes = {
-    data: PropTypes.object.isRequired,
+    menu: PropTypes.object.isRequired,
 };
 
 export default MenuItem;
