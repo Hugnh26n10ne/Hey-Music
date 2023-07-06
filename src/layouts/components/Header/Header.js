@@ -2,6 +2,8 @@ import config from '~/configs';
 
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
+import React, { useContext } from 'react';
+import { LayoutContent } from '~/layouts/DefaultLayout';
 
 import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
@@ -9,12 +11,11 @@ import Search from '~/components/Search/Search';
 import Notification from '~/components/Notification/Notification';
 import Upload from '~/components/Upload/Upload';
 import Menu from '~/components/Menu/Menu';
+import Logo from '~/components/Logo';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Image from '~/components/Image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
@@ -109,12 +110,15 @@ function Header() {
         },
     ];
 
+    const { dispatch } = useContext(LayoutContent);
+
+    const handleClick = () => {
+        dispatch({ type: 'TOGGLE_ACTIVE' });
+    };
+
     return (
         <header className={cx('wrapper')}>
-            <Button to={config.routes.home} type="icon-text" className={cx('logo')}>
-                <Image src={images.logo1} alt="logo" />
-                <div className={cx('logo-text')}>Hey Music</div>
-            </Button>
+            <Logo />
             <div className={cx('search')}>
                 <Search items={searchResults} />
             </div>
@@ -130,7 +134,10 @@ function Header() {
                         </Menu>
 
                         <Button type="icon-text" className="btn-nav">
-                            <FontAwesomeIcon icon={faBars} />
+                            <input type="checkbox" onChange={handleClick} className={cx('menu-input')} id="active" />
+                            <label htmlFor="active" className={cx('menu-btn')}>
+                                <span></span>
+                            </label>
                         </Button>
                     </>
                 ) : (

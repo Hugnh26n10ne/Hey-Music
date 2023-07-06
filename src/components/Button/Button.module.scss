@@ -92,11 +92,11 @@
 // nav
 
 .btn-nav {
-    @media (min-width: $primary-ipad-width) {
+    @media (min-width: $primary-mobile-width) {
         width: 0;
         display: none;
     }
-
+    position: relative;
     background-color: transparent;
     padding: 0;
     width: 32px;

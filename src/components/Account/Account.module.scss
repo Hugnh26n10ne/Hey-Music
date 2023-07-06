@@ -2,8 +2,10 @@
 .wrapper {
     &:hover {
         background-color: $bg-light-red;
-        color: $text-white;
         border-radius: 5px;
+        .info {
+            color: $text-white;
+        }
     }
     &:active {
         background-color: $bg-dark-red;
@@ -34,6 +36,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        color: $text-black;
     }
 }
 .info {

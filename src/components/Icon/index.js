@@ -1,1 +1,11 @@
-export { UploadIcon, SignOutIcon } from './Icon';
+export {
+    UploadIcon,
+    SignOutIcon,
+    PlusIcon,
+    HomeIcon,
+    TalkShowIcon,
+    KaraokeIcon,
+    PodCastIcon,
+    RadioIcon,
+    LibraryIcon,
+} from './Icon';

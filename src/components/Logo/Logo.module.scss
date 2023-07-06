@@ -1,0 +1,49 @@
+@import '../GlobalStyles/variables';
+.logo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 25px;
+    min-width: auto;
+    padding: 0;
+    border-radius: 0;
+    font-size: 16px;
+    font-weight: 400;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    @media (max-width: $primary-ipad-width) {
+        flex-direction: column !important;
+        gap: 0px;
+        .logo-text {
+            font: 400 18px $primary-font !important;
+        }
+        img {
+            width: 35px !important;
+            height: 35px !important;
+        }
+    }
+    .logo-text {
+        color: #ffffff;
+        text-align: center;
+        white-space: nowrap;
+        font: 400 24px $primary-font;
+    }
+    img {
+        width: 52px;
+        height: 52px;
+    }
+}
+.logo-nav {
+    padding: 10px;
+    width: 100%;
+    flex-direction: row !important;
+    gap: 25px;
+    .logo-text {
+        color: black;
+    }
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}

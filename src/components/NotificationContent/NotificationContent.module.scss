@@ -2,7 +2,10 @@
 
 .wrapper {
     &.active {
-        color: $text-red;
+        .content,
+        .time {
+            color: $text-red;
+        }
     }
     &:hover {
         background-color: $bg-light-white;
@@ -22,6 +25,7 @@
     gap: 10px;
     background: $bg-white;
     padding: 9px;
+    margin-left: 0 !important;
     width: 400px;
     max-height: 350px;
     transition: all 0.3s ease;
@@ -39,5 +43,9 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        color: $text-black;
+    }
+    .time {
+        color: $text-black;
     }
 }

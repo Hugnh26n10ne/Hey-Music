@@ -1,3 +1,6 @@
+import images from '~/assets/images';
+import Image from '~/components/Image';
+
 export const UploadIcon = ({ className, width, height }) => (
     <svg
         className={className}
@@ -33,3 +36,23 @@ export const SignOutIcon = ({ className, width, height }) => (
         </g>
     </svg>
 );
+export const PlusIcon = ({ className, width, height, stroke = 'black' }) => (
+    <svg
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+        width={width}
+        height={height}
+        viewBox="0 0 20 20"
+        fill="none"
+    >
+        <line x1="9.72865" y1="2" x2="9.72865" y2="17.8378" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+        <line x1="2" y1="10" x2="17.8378" y2="10" stroke={stroke} strokeWidth="4" strokeLinecap="round" />
+    </svg>
+);
+
+export const HomeIcon = ({ className }) => <Image src={images.home} className={className} />;
+export const TalkShowIcon = ({ className }) => <Image src={images.talkshow} className={className} />;
+export const KaraokeIcon = ({ className }) => <Image src={images.karaoke} className={className} />;
+export const PodCastIcon = ({ className }) => <Image src={images.podcast} className={className} />;
+export const RadioIcon = ({ className }) => <Image src={images.radio} className={className} />;
+export const LibraryIcon = ({ className }) => <Image src={images.library} className={className} />;

@@ -1,0 +1,205 @@
+@import '../../../components/GlobalStyles/variables';
+
+.wrapper {
+    @media (max-width: $primary-mobile-width) {
+        &.active {
+            display: block;
+            & .nav {
+                position: relative;
+                width: 40%;
+                height: 100%;
+                background: $bg-white;
+                z-index: 12;
+            }
+            background: transparent;
+        }
+        display: none;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        gap: 0;
+        justify-content: flex-start;
+        z-index: 11;
+        overflow-y: auto;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    top: -10px;
+    width: 120px;
+    height: 100%;
+    position: sticky;
+
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn {
+    width: 82px;
+    height: 82px;
+    min-width: auto;
+    padding: 0;
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin-left: 0 !important;
+    transition: all 0.3s ease;
+}
+
+.btn .bg-active {
+    &.active {
+        @media (max-width: $primary-mobile-width) {
+            display: none;
+        }
+        background-color: #75019e;
+    }
+    height: 112px;
+    width: 30px;
+    background-color: transparent;
+    position: absolute;
+    top: -15px;
+    left: -20px;
+    z-index: -1;
+    transition: all 1.1s ease;
+}
+.btn .bg-active {
+    &.active {
+        &::before,
+        &::after {
+            @media (max-width: $primary-mobile-width) {
+                display: none;
+            }
+            background-color: #964db2;
+        }
+        &::before {
+            top: -35px;
+            left: 0;
+        }
+        &::after {
+            bottom: -35px;
+            left: 0;
+        }
+    }
+    &::before,
+    &::after {
+        @media (max-width: $primary-mobile-width) {
+            display: none;
+        }
+        content: '';
+        position: absolute;
+        background-color: #954db2;
+        height: 50px;
+        width: 50px;
+        z-index: -1;
+        transition: all 1.3s ease;
+    }
+
+    &::before {
+        top: 15px;
+        left: 0;
+        border-radius: 0 0 0 20px;
+    }
+    &::after {
+        bottom: 15px;
+        left: 0;
+        border-radius: 20px 0 0 0;
+    }
+}
+
+.icon {
+    flex-shrink: 0;
+}
+
+.btn-feature {
+    width: 38px;
+    height: 38px;
+    margin-top: 26px;
+    margin-bottom: -14px;
+    background: #fc9c9c;
+    border-radius: 50%;
+}
+
+.icon-feature {
+    width: 19.84px;
+    height: 19.84px;
+}
+
+.btn-home {
+    background: $bg-ihome;
+}
+.btn-talkshow {
+    background: $bg-italkshow;
+}
+.btn-karaoke {
+    background: $bg-ikaraoke;
+}
+.icon-karaoke {
+    width: 35px;
+    height: 35px;
+}
+.btn-podcast {
+    background: $bg-ipodcast;
+}
+.icon-podcast {
+    width: 35px;
+    height: 35px;
+}
+.btn-radio {
+    background: $bg-iradio;
+}
+.icon-radio {
+    width: 35px;
+    height: 35px;
+}
+.btn-library {
+    background: $bg-ilibrary;
+}
+.icon-library {
+    width: 35px;
+    height: 35px;
+}
+
+.title {
+    font-size: 13px;
+    text-align: center;
+}
+
+// Mobile
+
+.btn {
+    &:hover {
+        background: $bg-near-red;
+        color: $text-white;
+    }
+    border-radius: 1px;
+    background: transparent;
+    color: $text-black;
+    height: 40px;
+    width: 100%;
+    span {
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+.btn-feature {
+    @media (max-width: $primary-mobile-width) {
+        display: none;
+    }
+}
+
+.icon {
+    display: none;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 11;
+}

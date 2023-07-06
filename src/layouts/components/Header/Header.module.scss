@@ -12,21 +12,6 @@
     background: $bg-purple;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
 
-    .logo {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        gap: 25px;
-        min-width: auto;
-        padding: 0;
-        border-radius: 0;
-        font-size: 16px;
-        font-weight: 400;
-        position: relative;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
     .search {
         display: flex;
         justify-content: center;
@@ -39,30 +24,6 @@
         gap: 45px;
         position: relative;
         transition: all 0.3s ease;
-    }
-}
-
-.logo {
-    @media (max-width: $primary-ipad-width) {
-        flex-direction: column !important;
-        gap: 0px !important;
-        .logo-text {
-            font: 400 18px $primary-font !important;
-        }
-        img {
-            width: 35px !important;
-            height: 35px !important;
-        }
-    }
-    .logo-text {
-        color: #ffffff;
-        text-align: center;
-        white-space: nowrap;
-        font: 400 24px $primary-font;
-    }
-    img {
-        width: 52px;
-        height: 52px;
     }
 }
 
@@ -108,4 +69,51 @@
         text-align: center;
         font: 400 16px $primary-font;
     }
+}
+
+.menu-input {
+    display: none;
+}
+
+.menu-btn {
+    position: relative;
+    z-index: 12;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.menu-btn span,
+.menu-btn:before,
+.menu-btn:after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 16px;
+    width: 40%;
+    border-bottom: 2px solid $bg-white;
+    transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.menu-btn:before {
+    transform: translateY(-8px);
+}
+.menu-btn:after {
+    transform: translateY(8px);
+}
+
+/* closing animation */
+.menu-input:checked + .menu-btn span {
+    transform: scaleX(0);
+}
+.menu-input:checked + .menu-btn:before {
+    transform: rotate(45deg);
+    border-color: #fff;
+}
+.menu-input:checked + .menu-btn:after {
+    transform: rotate(-45deg);
+    border-color: #fff;
 }

@@ -2,8 +2,10 @@
 .wrapper {
     &:hover {
         background-color: $bg-light-white;
-        color: $text-red;
         border-radius: 5px;
+        .info {
+            color: $text-red;
+        }
         .arrow-right {
             color: $bg-dark-red;
         }
@@ -41,6 +43,7 @@
         align-items: center;
         justify-content: space-between;
         gap: 10px;
+        color: $text-black;
     }
 }
 .info {
