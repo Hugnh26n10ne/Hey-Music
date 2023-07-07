@@ -2,9 +2,6 @@ import configs from '~/configs';
 import classNames from 'classnames/bind';
 import { useState } from 'react';
 
-import React, { useContext } from 'react';
-import { LayoutContent } from '~/layouts/DefaultLayout';
-
 import Button from '~/components/Button';
 import Logo from '~/components/Logo';
 import { PlusIcon, HomeIcon, TalkShowIcon, KaraokeIcon, PodCastIcon, RadioIcon, LibraryIcon } from '~/components/Icon';
@@ -13,7 +10,7 @@ import styles from './Nav.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Nav() {
+function Nav({ activeNav }) {
     const listNav = [
         {
             name: 'feature',
@@ -82,22 +79,16 @@ function Nav() {
             >
                 <nav.icon className={cx('icon', `icon-${nav?.name}`)} stroke={nav?.stroke} />
                 {nav.title && <span className={cx('title')}>{nav.title}</span>}
-                {active === index ? (
-                    <div className={cx('bg-active', 'active')}></div>
-                ) : (
-                    <div className={cx('bg-active')}></div>
-                )}
             </Button>
         ));
     };
 
-    const { state } = useContext(LayoutContent);
-
     return (
-        <nav className={cx('wrapper', state.isActive ? 'active' : '')}>
+        <nav className={cx('wrapper', activeNav ? 'active' : '')}>
             <div className={cx('nav')}>
                 <Logo className="logo-nav" />
                 {renderNav()}
+                <div className={cx('bg-active')}></div>
             </div>
             <div className={cx('background')}></div>
         </nav>

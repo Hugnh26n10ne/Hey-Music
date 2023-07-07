@@ -2,8 +2,6 @@ import config from '~/configs';
 
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react';
-import React, { useContext } from 'react';
-import { LayoutContent } from '~/layouts/DefaultLayout';
 
 import 'tippy.js/dist/tippy.css';
 import Button from '~/components/Button';
@@ -19,7 +17,7 @@ import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Header() {
+function Header({ setActiveNav, activeNav }) {
     const currentUser = true;
 
     const userMenu = [
@@ -110,10 +108,8 @@ function Header() {
         },
     ];
 
-    const { dispatch } = useContext(LayoutContent);
-
     const handleClick = () => {
-        dispatch({ type: 'TOGGLE_ACTIVE' });
+        setActiveNav(!activeNav);
     };
 
     return (

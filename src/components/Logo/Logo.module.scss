@@ -38,12 +38,16 @@
     }
 }
 .logo-nav {
-    padding: 10px;
-    width: 100%;
-    flex-direction: row !important;
-    gap: 25px;
-    .logo-text {
-        color: black;
+    @media (max-width: $primary-mobile-width) {
+        display: flex;
+        padding: 10px;
+        width: 100%;
+        flex-direction: row !important;
+        gap: 25px;
+        .logo-text {
+            color: black;
+        }
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     }
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    display: none;
 }
