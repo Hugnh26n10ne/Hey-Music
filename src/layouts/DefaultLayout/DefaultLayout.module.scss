@@ -13,6 +13,8 @@
     transform: translate(120px, 70px);
     height: 5000px;
 }
-.content.active {
-    transform: translate(0, 0px);
+@media (max-width: $primary-mobile-width) {
+    .content.active {
+        transform: translate(0, 0px);
+    }
 }

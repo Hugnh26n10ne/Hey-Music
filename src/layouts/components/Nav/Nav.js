@@ -11,7 +11,7 @@ import styles from './Nav.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Nav({ activeNav }) {
+function Nav({ setActiveNav, activeNav }) {
     const listNav = [
         {
             name: 'feature',
@@ -74,6 +74,7 @@ function Nav({ activeNav }) {
 
     const handleAddActive = (id) => {
         setActive(id);
+        setActiveNav(false);
         if (id === 0) {
             hanleImageClick();
         }

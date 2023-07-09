@@ -130,7 +130,13 @@ function Header({ setActiveNav, activeNav }) {
                         </Menu>
 
                         <Button type="icon-text" className="btn-nav">
-                            <input type="checkbox" onChange={handleClick} className={cx('menu-input')} id="active" />
+                            <input
+                                type="checkbox"
+                                onChange={handleClick}
+                                checked={activeNav}
+                                className={cx('menu-input')}
+                                id="active"
+                            />
                             <label htmlFor="active" className={cx('menu-btn')}>
                                 <span></span>
                             </label>

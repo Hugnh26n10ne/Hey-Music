@@ -27,7 +27,7 @@ function LayoutDefault({ children }) {
         <div>
             <Header setActiveNav={setActiveNav} activeNav={activeNav} />
             <div className={cx('container')}>
-                <Nav activeNav={activeNav} />
+                <Nav setActiveNav={setActiveNav} activeNav={activeNav} />
                 <div className={cx('content', activeNav ? 'active' : '')}>{children}</div>
             </div>
         </div>
