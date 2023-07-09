@@ -8,7 +8,7 @@ import { Profiler } from 'react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Profiler>
+        <Profiler id="camp">
             <GlobalStyles>
                 <App />
             </GlobalStyles>
