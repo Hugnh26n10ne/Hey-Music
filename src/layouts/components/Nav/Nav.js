@@ -73,11 +73,12 @@ function Nav({ setActiveNav, activeNav }) {
     const [active, setActive] = useState(1);
 
     const handleAddActive = (id) => {
-        setActive(id);
-        setActiveNav(false);
         if (id === 0) {
             hanleImageClick();
+        } else {
+            setActive(id);
         }
+        setActiveNav(false);
     };
 
     const [src, setSrc] = useState(images.feature1);

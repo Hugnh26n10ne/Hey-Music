@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import config from '~/configs';
 
 import classNames from 'classnames/bind';
@@ -13,9 +12,26 @@ import styles from './Notification.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Notification({ items = [], ...passProps }) {
+function Notification({ ...passProps }) {
+    const time = `${15} p`;
+
+    const notificationItems = [
+        {
+            content: 'Sơn Tùng MTP vừa ra bài hát mới : “Making My Way”',
+            time: time,
+            to: '/notifi_1',
+            isSeen: true,
+        },
+        {
+            content: 'Sơn Tùng MTP tung lyric bài : “Making My Way”',
+            time: time,
+            to: '/notifi_2',
+            isSeen: false,
+        },
+    ];
+
     const renderNotifications = () => {
-        return items.map((data, index) => {
+        return notificationItems.map((data, index) => {
             return <NotificationContent key={index} data={data} />;
         });
     };
@@ -49,9 +65,5 @@ function Notification({ items = [], ...passProps }) {
         </Button>
     );
 }
-
-Notification.propTypes = {
-    items: PropTypes.array.isRequired,
-};
 
 export default Notification;

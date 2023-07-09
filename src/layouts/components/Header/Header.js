@@ -44,23 +44,6 @@ function Header({ setActiveNav, activeNav }) {
         );
     };
 
-    const time = `${15} p`;
-
-    const notificationItems = [
-        {
-            content: 'Sơn Tùng MTP vừa ra bài hát mới : “Making My Way”',
-            time: time,
-            to: '/notifi_1',
-            isSeen: true,
-        },
-        {
-            content: 'Sơn Tùng MTP tung lyric bài : “Making My Way”',
-            time: time,
-            to: '/notifi_2',
-            isSeen: false,
-        },
-    ];
-
     const searchResults = [
         {
             song: [
@@ -121,7 +104,7 @@ function Header({ setActiveNav, activeNav }) {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Notification items={notificationItems} />
+                        <Notification />
                         <Tippy content="Upload" placement="bottom">
                             <Upload />
                         </Tippy>

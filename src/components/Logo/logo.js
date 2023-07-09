@@ -20,7 +20,7 @@ function Logo({ className }) {
 }
 
 Logo.propTypes = {
-    className: PropTypes.array,
+    className: PropTypes.array.isRequired,
 };
 
 export default Logo;
