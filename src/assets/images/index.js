@@ -5,6 +5,10 @@ const images = {
     logo1: require('~/assets/images/logo/logo-1.png'),
     logo2: require('~/assets/images/logo/logo-2.png'),
 
+    feature1: require('~/assets/images/icon/feature.png'),
+    feature2: require('~/assets/images/icon/feature1.png'),
+    feature3: require('~/assets/images/icon/feature2.png'),
+    feature4: require('~/assets/images/icon/feature3.png'),
     home: require('~/assets/images/icon/home.png'),
     karaoke: require('~/assets/images/icon/karaoke.png'),
     talkshow: require('~/assets/images/icon/talkshow.png'),

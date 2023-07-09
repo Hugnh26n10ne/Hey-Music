@@ -1,6 +1,11 @@
 @import '../../../components/GlobalStyles/variables';
 
 .wrapper {
+    &::-webkit-scrollbar {
+        width: 0;
+        border-radius: 0px;
+        background-color: rgb(96 10 126);
+    }
     .nav {
         display: flex;
         flex-direction: column;
@@ -9,10 +14,16 @@
         gap: 32px;
     }
 
-    top: -10px;
+    top: 0px;
+    padding-top: $pd-top;
     width: 120px;
     height: 100%;
-    position: sticky;
+    position: fixed;
+    overflow-y: overlay;
+
+    overscroll-behavior: contain;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
 
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     background: rgba(255, 255, 255, 0.3);
@@ -32,6 +43,7 @@
 
 .icon {
     flex-shrink: 0;
+    border-radius: 5px;
 }
 
 .btn-feature {
@@ -44,8 +56,14 @@
 }
 
 .icon-feature {
-    width: 19.84px;
-    height: 19.84px;
+    &:hover {
+        scale: 2;
+    }
+
+    // width: 19.84px;
+    // height: 19.84px;
+    width: 100%;
+    height: 100%;
 }
 
 .btn-home {
@@ -93,40 +111,61 @@
 .wrapper {
     @media (max-width: $primary-mobile-width) {
         &.active {
-            display: block;
+            left: 0;
+            background: $bg-white;
             & .nav {
+                z-index: 99999;
                 position: relative;
-                width: 40%;
+                width: 100%;
                 height: 100%;
                 background: $bg-white;
-                z-index: 12;
 
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                gap: 10px;
+                scroll-snap-align: start;
+                gap: 0px;
             }
-            background: transparent;
 
-            .background {
-                position: absolute;
-                width: 100%;
-                height: 100%;
+            .background.active {
+                display: block;
+                position: fixed;
+                width: 100vw;
+                height: 100vh;
                 top: 0;
                 left: 0;
                 background-color: rgba(0, 0, 0, 0.4);
                 z-index: 11;
             }
+            .background {
+                display: none;
+            }
         }
-        display: none;
+        display: block;
         position: fixed;
-        width: 100%;
+        width: 40%;
+        height: 100vh;
+        transition: all 0.3s ease-in-out;
         top: 0;
-        gap: 0;
-        justify-content: flex-start;
-        z-index: 11;
-        overflow-y: auto;
+        left: -100%;
+        padding-top: 0;
+        background-color: $bg-white;
+        z-index: 1002;
+        box-shadow: 1px 0px 4px 0px rgba(0, 0, 0, 0.6);
+        overflow: hidden scroll;
+        overflow: -moz-scrollbars-none;
+        -ms-overflow-style: none;
+        scroll-padding: 48px;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: $primary-mobile-width) {
+    .nav {
+        .nav-item {
+            background-color: white;
+        }
     }
 }
 
@@ -139,7 +178,7 @@
     height: 82px;
     width: 112px;
     position: absolute;
-    top: 82px;
+    top: 82px + $pd-top;
     left: -12px;
     border-radius: 10px;
     border: 0px solid #5a0083;
@@ -176,29 +215,11 @@
     }
 }
 
-.btn:nth-child(4).active {
-    ~ .bg-active {
-        transform: translateY(1 * 114px);
-    }
-}
-.btn:nth-child(5).active {
-    ~ .bg-active {
-        transform: translateY(2 * 114px);
-    }
-}
-.btn:nth-child(6).active {
-    ~ .bg-active {
-        transform: translateY(3 * 114px);
-    }
-}
-.btn:nth-child(7).active {
-    ~ .bg-active {
-        transform: translateY(4 * 114px);
-    }
-}
-.btn:nth-child(8).active {
-    ~ .bg-active {
-        transform: translateY(5 * 114px);
+@for $i from 1 through 100 {
+    .btn:nth-child(#{$i + 3}).active {
+        ~ .bg-active {
+            transform: translateY($i * 114px);
+        }
     }
 }
 
@@ -213,6 +234,7 @@
         color: $text-black;
         height: 40px;
         width: 100%;
+        padding: 20px 0 20px 0;
         span {
             font-weight: 600;
             font-size: 14px;

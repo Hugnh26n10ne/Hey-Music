@@ -1,7 +1,7 @@
 @import '../../../components/GlobalStyles/variables';
 
 .wrapper {
-    position: relative;
+    position: fixed;
     display: flex;
 
     justify-content: space-around;
@@ -26,6 +26,10 @@
         position: relative;
         transition: all 0.3s ease;
     }
+}
+.wrapper.active {
+    position: relative;
+    z-index: auto;
 }
 
 .search {

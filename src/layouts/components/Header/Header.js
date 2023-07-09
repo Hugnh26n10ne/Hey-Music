@@ -113,7 +113,7 @@ function Header({ setActiveNav, activeNav }) {
     };
 
     return (
-        <header className={cx('wrapper')}>
+        <header className={cx('wrapper', activeNav ? 'active' : '')}>
             <Logo />
             <div className={cx('search')}>
                 <Search items={searchResults} />

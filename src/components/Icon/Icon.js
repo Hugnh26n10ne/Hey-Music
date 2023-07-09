@@ -50,9 +50,11 @@ export const PlusIcon = ({ className, width, height, stroke = 'black' }) => (
     </svg>
 );
 
+export const FeatureIcon = ({ className, src }) => <Image src={src || images.feature} className={className} />;
 export const HomeIcon = ({ className }) => <Image src={images.home} className={className} />;
 export const TalkShowIcon = ({ className }) => <Image src={images.talkshow} className={className} />;
 export const KaraokeIcon = ({ className }) => <Image src={images.karaoke} className={className} />;
 export const PodCastIcon = ({ className }) => <Image src={images.podcast} className={className} />;
 export const RadioIcon = ({ className }) => <Image src={images.radio} className={className} />;
 export const LibraryIcon = ({ className }) => <Image src={images.library} className={className} />;
+export const GameIcon = ({ className }) => <Image src={images.avatarFriend} className={className} />;

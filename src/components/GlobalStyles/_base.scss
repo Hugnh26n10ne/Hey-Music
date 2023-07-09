@@ -85,6 +85,8 @@ html {
     font-size: 62.5%;
 }
 body {
+    width: 100vw;
+    min-height: 100vh;
     font-family: $primary-font;
     font-size: 1.6rem;
     font-style: normal;
@@ -92,12 +94,18 @@ body {
     overflow: hidden overlay;
     text-rendering: optimizeSpeed;
     scroll-behavior: smooth;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
     color: $text-white;
     background: $primary-color-bg;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
+}
+
+.disable-scroll {
+    overflow: hidden;
 }
 
 button,

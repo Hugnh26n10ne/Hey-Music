@@ -8,7 +8,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Image from '~/components/Image';
 import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
-import { SignOutIcon } from '~/components/Icon';
+import * as Icon from '~/components/Icon';
 
 import styles from './Info.module.scss';
 
@@ -55,7 +55,7 @@ function CurrentUserInfo({ attrs, menu = [], info = {} }) {
                     </Button>
                     <div className={cx('menu-items', 'menu-actions')}>{renderCurrentUserInfo()}</div>
                     <Button to={config.routes.logout} type="icon-text" className="logout">
-                        <SignOutIcon className={cx('isLogout')} />
+                        <Icon.SignOutIcon className={cx('isLogout')} />
                         <span className={cx('logout-content')}>Đăng xuất</span>
                     </Button>
                 </div>
