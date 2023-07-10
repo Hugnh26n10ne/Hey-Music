@@ -14,7 +14,6 @@ function Logo({ className }) {
     return (
         <Button to={config.routes.home} type="icon-text" className={cx('logo', className)}>
             <Image src={images.logo1} alt="logo" />
-            <div className={cx('logo-text')}>Hey Music</div>
         </Button>
     );
 }

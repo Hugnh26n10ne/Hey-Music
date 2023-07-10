@@ -1,5 +1,6 @@
 @import '../GlobalStyles/variables';
 .logo {
+    margin-left: 30px;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -21,10 +22,6 @@
         .logo-text {
             font: 400 18px $primary-font !important;
         }
-        img {
-            width: 35px !important;
-            height: 35px !important;
-        }
     }
     .logo-text {
         color: #ffffff;
@@ -33,7 +30,6 @@
         font: 400 24px $primary-font;
     }
     img {
-        width: 52px;
         height: 52px;
     }
 }
