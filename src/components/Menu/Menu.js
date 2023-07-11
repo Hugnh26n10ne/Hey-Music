@@ -8,10 +8,10 @@ import MenuItem from './MenuItem';
 function Menu({ children, type = '', menu = [], info = {}, ...menuProps }) {
     const Cmp = (attrs) => {
         if (type === 'user') {
-            return <CurrentUserInfo menu={menu} info={info} />;
+            return <CurrentUserInfo />;
         } else if (type === '') {
             if (menu.length > 0) {
-                return <MenuItem menu={menu} />;
+                return <MenuItem />;
             } else {
                 return '';
             }

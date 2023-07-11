@@ -10,39 +10,16 @@ import Notification from '~/components/Notification/Notification';
 import Upload from '~/components/Upload/Upload';
 import Menu from '~/components/Menu/Menu';
 import Logo from '~/components/Logo';
+import NavMobile from '~/components/NavMobile';
+import CurrentUser from '~/components/Info/CurrenUser';
 
 import styles from './Header.module.scss';
 import images from '~/assets/images';
-import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
-function Header({ setActiveNav, activeNav }) {
+function Header() {
     const currentUser = true;
-
-    const userMenu = [
-        { title: 'Xem thông tin tài khoản', to: '/info', level: 0 },
-        { title: 'Tải lên', to: '/upload', level: 0 },
-        { title: 'Đổi nền trắng', level: 0 },
-        { title: 'Cài đặt', to: '/setting', level: 0 },
-        { title: 'Update Pro', to: '/updatepro', level: 1 },
-    ];
-
-    const currentUserInfo = {
-        avatar: images.avatar,
-        name: 'ShaKaChju',
-        userLevel: 1,
-        isReal: true,
-    };
-
-    const renderCurrentUserInfo = () => {
-        return (
-            <Button type="icon-text" className="info" to="/@ShaKaChju">
-                <Image className={cx('avatar')} src={currentUserInfo?.avatar} alt="Avatar" fallback={images.noImage1} />
-                <span className={cx('name')}>{currentUserInfo?.name}</span>
-            </Button>
-        );
-    };
 
     const searchResults = [
         {
@@ -91,12 +68,8 @@ function Header({ setActiveNav, activeNav }) {
         },
     ];
 
-    const handleClick = () => {
-        setActiveNav(!activeNav);
-    };
-
     return (
-        <header className={cx('wrapper', activeNav ? 'active' : '')}>
+        <header className={cx('wrapper')}>
             <Logo />
             <div className={cx('search')}>
                 <Search items={searchResults} />
@@ -104,26 +77,17 @@ function Header({ setActiveNav, activeNav }) {
             <div className={cx('actions')}>
                 {currentUser ? (
                     <>
-                        <Notification />
+                        <Notification hideOnClick={false} />
                         <Tippy content="Upload" placement="bottom">
                             <Upload />
                         </Tippy>
-                        <Menu type="user" menu={userMenu} info={currentUserInfo} delay={[0, 500]} hideOnClick={false}>
-                            <div>{renderCurrentUserInfo()}</div>
+                        <Menu type="user" delay={[0, 500]} hideOnClick={false}>
+                            <div>
+                                <CurrentUser />
+                            </div>
                         </Menu>
 
-                        <Button type="icon-text" className="btn-nav">
-                            <input
-                                type="checkbox"
-                                onChange={handleClick}
-                                checked={activeNav}
-                                className={cx('menu-input')}
-                                id="active"
-                            />
-                            <label htmlFor="active" className={cx('menu-btn')}>
-                                <span></span>
-                            </label>
-                        </Button>
+                        <NavMobile />
                     </>
                 ) : (
                     <>

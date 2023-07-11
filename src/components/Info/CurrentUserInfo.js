@@ -9,20 +9,36 @@ import Image from '~/components/Image';
 import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import * as Icon from '~/components/Icon';
+import images from '~/assets/images';
 
 import styles from './Info.module.scss';
 
 const cx = classNames.bind(styles);
 
-function CurrentUserInfo({ attrs, menu = [], info = {} }) {
+function CurrentUserInfo({ attrs }) {
+    const userMenu = [
+        { title: 'Xem thông tin tài khoản', to: '/info', level: 0 },
+        { title: 'Tải lên', to: '/upload', level: 0 },
+        { title: 'Đổi nền trắng', level: 0 },
+        { title: 'Cài đặt', to: '/setting', level: 0 },
+        { title: 'Update Pro', to: '/updatepro', level: 1 },
+    ];
+
+    const currentUserInfo = {
+        avatar: images.avatar,
+        name: 'ShaKaChju',
+        userLevel: 1,
+        isReal: true,
+    };
+
     const renderCurrentUserInfo = () => {
-        return menu.map((data, index) => {
+        return userMenu.map((data, index) => {
             let isLevel = false;
 
-            if (info?.userLevel === 1) {
+            if (currentUserInfo?.userLevel === 1) {
                 isLevel = true;
-            } else if (info?.userLevel === 0) {
-                isLevel = info?.userLevel === data?.level;
+            } else if (currentUserInfo?.userLevel === 0) {
+                isLevel = currentUserInfo?.userLevel === data?.level;
             }
 
             if (isLevel) {
@@ -38,17 +54,17 @@ function CurrentUserInfo({ attrs, menu = [], info = {} }) {
     };
 
     const handleIsReal = () =>
-        info.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>;
+        currentUserInfo.isReal ? <FontAwesomeIcon className={cx('isCheck')} icon={faCheckCircle} /> : <></>;
 
     return (
         <div className={cx('wrapper')} tabIndex={-1} {...attrs}>
             <PopperWrapper>
                 <div className={cx('menu')}>
                     <Button to={config.routes.profile} type="icon-text" className={cx('header', 'btn-currentUser')}>
-                        <Image className={cx('avatar')} src={info.avatar} alt="" />
+                        <Image className={cx('avatar')} src={currentUserInfo.avatar} alt="" />
                         <span className={cx('titles')}>
                             <span className={cx('title-name')}>
-                                <p className={cx('name')}>{info.name}</p>
+                                <p className={cx('name')}>{currentUserInfo.name}</p>
                                 {handleIsReal()}
                             </span>
                         </span>

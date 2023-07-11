@@ -1,5 +1,4 @@
-import config from '~/configs';
-
+import configs from '~/configs';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -37,7 +36,7 @@ function Notification({ ...passProps }) {
     };
 
     return (
-        <Button type="icon" to={config.routes.notification} className={cx('btn-notification')}>
+        <div className={cx('btn-notification')}>
             <Tippy
                 {...passProps}
                 offset={[0, 28]}
@@ -49,7 +48,9 @@ function Notification({ ...passProps }) {
                             <h4 className={cx('title')}>Thông báo</h4>
                             {renderNotifications()}
                             <div className={cx('more')}>
-                                <a href="xemthem">Xem thêm</a>
+                                <Button type="text" to={configs.routes.notification}>
+                                    Xem thêm
+                                </Button>
                             </div>
                         </PopperWrapper>
                     </div>
@@ -62,7 +63,7 @@ function Notification({ ...passProps }) {
                     </Button>
                 </div>
             </Tippy>
-        </Button>
+        </div>
     );
 }
 

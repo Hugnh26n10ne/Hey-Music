@@ -105,3 +105,26 @@
 .nameSound {
     color: $text-red;
 }
+
+// Curren User
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+.name {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border: none;
+    color: $text-white;
+    text-align: center;
+    font: 400 16px $primary-font;
+}
+.title-name {
+    .name {
+        color: $text-black;
+    }
+}

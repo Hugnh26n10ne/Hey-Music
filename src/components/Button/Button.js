@@ -73,7 +73,7 @@ Button.propTypes = {
     to: PropTypes.string,
     href: PropTypes.string,
     type: PropTypes.string,
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     className: PropTypes.string,
     onClick: PropTypes.func,
     leftIcon: PropTypes.node,

@@ -6,6 +6,9 @@
     border-radius: 0;
     font-size: 16px;
     font-weight: 400;
+    outline: none;
+    border: none;
+    background: transparent;
 }
 
 .notification-result {
@@ -43,6 +46,8 @@
                 background-color: $bg-dark-green;
                 color: $text-white;
             }
+            min-width: auto;
+            border-radius: 0;
             color: $text-green;
             padding: 5px;
             width: 100%;

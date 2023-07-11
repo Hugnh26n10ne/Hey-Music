@@ -6,7 +6,9 @@ import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
-function MenuItem({ menu = [] }) {
+function MenuItem() {
+    const menu = [];
+
     const renderMenu = () => {
         return menu.map((data, index) => (
             <Button key={index} to={data?.to} type="icon-text" rightIcon={data?.icon} className={cx('item-title')}>
