@@ -14,9 +14,9 @@ export const Magnifier = ({ className, width, height }) => (
             d="M17.0448 8.9657C17.0448 13.3619 13.4682 16.9314 9.04915 16.9314C4.63011 16.9314 1.05347 13.3619 1.05347 8.9657C1.05347 4.56951 4.63011 1 9.04915 1C13.4682 1 17.0448 4.56951 17.0448 8.9657Z"
             fill="none"
             stroke="white"
-            stroke-width="2"
+            strokeWidth="2"
         />
-        <path d="M15.8401 14.3477L23.2413 20" stroke="white" stroke-width="2" stroke-linecap="round" />
+        <path d="M15.8401 14.3477L23.2413 20" stroke="white" strokeWidth="2" strokeLinecap="round" />
     </svg>
 );
 
