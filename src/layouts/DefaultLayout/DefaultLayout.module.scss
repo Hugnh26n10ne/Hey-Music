@@ -7,11 +7,16 @@
 
 .content {
     @media (max-width: $primary-mobile-width) {
-        transform: translate(0, 70px);
+        left: 0px;
+        top: 70px;
+        width: 100%;
     }
     width: calc(100% - 120px);
-    transform: translate(120px, 70px);
-    height: 5000px;
+    height: 100vh;
+    position: fixed;
+    left: 120px;
+    top: 70px;
+    overflow-y: scroll;
 }
 
 @media (max-width: $primary-mobile-width) {

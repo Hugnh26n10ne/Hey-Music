@@ -1,0 +1,208 @@
+@import '../GlobalStyles/variables';
+.wrapper {
+    display: flex;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+.media-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 35px;
+    gap: 10px;
+    min-width: auto;
+    padding: 0;
+}
+.contents {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 11px;
+    width: 100%;
+    height: 57px;
+
+    min-width: auto;
+    padding: 0;
+    border-radius: 0;
+
+    background: transparent;
+}
+
+.imgs {
+    position: relative;
+    cursor: pointer;
+
+    .img {
+        border-radius: 10px;
+        width: 57px;
+        height: 57px;
+    }
+}
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    cursor: pointer;
+}
+.name {
+    .title {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $text-white;
+    }
+}
+.box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 150px;
+    color: #fff;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.others {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.other {
+    min-width: auto;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    padding: 3px;
+    border-radius: 50%;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 40vw;
+}
+.timeline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    gap: 10px;
+}
+.time {
+    min-width: 45px;
+    font-size: 12px;
+    color: $text-white;
+    font-weight: 500;
+}
+
+.left {
+    text-align: right;
+    margin-right: 10px;
+    opacity: 0.5;
+}
+.right {
+    margin-left: 10px;
+}
+.duration-bar {
+    display: flex;
+    justify-content: center;
+    height: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+.duration-bar:hover {
+    .slider-bar {
+        height: 5px;
+    }
+    .knot {
+        width: 12px;
+        height: 12px;
+        visibility: visible;
+    }
+}
+.slider-bar {
+    border-radius: 4px;
+    background: linear-gradient(
+        to right,
+        $bg-white 0%,
+        $bg-white 77.02844369837325%,
+        hsla(0, 0%, 100%, 0.3) 77.02844369837325%,
+        hsla(0, 0%, 100%, 0.3) 100%
+    );
+    align-self: center;
+    width: 100%;
+    height: 3px;
+}
+.knot {
+    width: 10px;
+    height: 10px;
+    visibility: hidden;
+    border-radius: 50%;
+    background-color: $bg-white;
+
+    transform: translate(180px, -3.5px);
+}
+
+.control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100%;
+}
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.media {
+    padding: 5px;
+    margin: 0 21px;
+    min-width: auto;
+    background-color: transparent;
+    line-height: 0;
+    position: relative;
+    cursor: pointer;
+    @media (max-width: $primary-ipad-width) {
+        margin: 0 15px;
+    }
+    @media (max-width: $primary-mobile-width) {
+        margin: 0 7px;
+    }
+}
+.is-hover-media:hover {
+    padding: 5px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+}

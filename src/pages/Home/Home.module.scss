@@ -1,0 +1,23 @@
+@import '../../components/GlobalStyles/variables';
+
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+.content {
+    width: 100%;
+    position: relative;
+}
+
+.box-main {
+    display: flex;
+    width: calc(100% - 120px);
+    margin-left: 60px;
+
+    @media (max-width: $primary-ipad-width) {
+        flex-direction: column;
+        margin-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+    }
+}

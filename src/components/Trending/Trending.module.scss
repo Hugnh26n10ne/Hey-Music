@@ -1,0 +1,23 @@
+@import '../GlobalStyles//variables';
+
+.wrapper {
+    width: 50%;
+    position: relative;
+    @media (max-width: $primary-ipad-width) {
+        width: 100%;
+    }
+}
+
+.trending {
+    margin-top: 20px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

@@ -1,0 +1,97 @@
+@import '../GlobalStyles/variables';
+.slick-arrow {
+    z-index: 50;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.6, 1);
+    opacity: 0;
+    outline: 0;
+    border: none;
+}
+
+.slick-dots {
+    display: flex !important;
+    position: absolute;
+    bottom: -10px;
+    left: 35px;
+
+    padding-left: 0;
+    gap: 8px;
+    transition: all 0.4s ease;
+
+    li {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin: 0 0px;
+        width: 36px;
+        height: 11px;
+        transition: all 0.4s ease;
+        button {
+            width: 36px;
+            height: 11px;
+        }
+
+        button::before {
+            opacity: 1;
+            border-radius: 5px;
+            width: 36px;
+            height: 11px;
+            overflow: hidden;
+            color: $text-white;
+            background: $text-white;
+            border: none;
+            transition: all 0.4s ease;
+        }
+    }
+
+    .slick-active {
+        width: 71.42px;
+        height: 11px;
+        button::before {
+            width: 71.42px;
+            height: 11px;
+            opacity: 1 !important;
+            background: #feb5b5;
+            color: #feb5b5 !important;
+        }
+    }
+}
+
+.slick-list {
+    overflow: hidden;
+
+    .slick-track {
+        display: inline-flex;
+    }
+}
+
+.slick-prev {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slick-prev:hover {
+    scale: 1.2;
+}
+
+.slick-prev.slick-disabled {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.slick-next {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slick-next:hover {
+    scale: 1.2;
+}
+
+.slick-next.slick-disabled {
+    opacity: 0;
+    visibility: hidden;
+}

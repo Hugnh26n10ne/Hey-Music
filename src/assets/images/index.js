@@ -18,6 +18,12 @@ const images = {
 
     avatar: require('~/assets/images/avatar/avatar.png'),
     avatarFriend: require('~/assets/images/avatar/friend1.jpg'),
-    magnifier: require('~/assets/images/image/magnifier.svg').default,
+    magnifier: require('~/assets/images/icon/magnifier.svg').default,
+
+    banner1: require('~/assets/images/banner/1.jpg'),
+    banner2: require('~/assets/images/banner/2.png'),
+    banner3: require('~/assets/images/banner/3.jpg'),
+
+    imgSong: require('~/assets/images/image/1.jpg'),
 };
 export default images;

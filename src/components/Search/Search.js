@@ -10,6 +10,7 @@ import { searchService } from '~/services';
 import Account from '~/components/Account';
 import Song from '~/components/Song';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
+import * as Icon from '~/components/Icon';
 import styles from './Search.module.scss';
 
 const cx = classNames.bind(styles);
@@ -92,7 +93,7 @@ function Search({ items = [] }) {
     const renderSongResults = () => {
         const data = items[0];
         return data.song.map((data, index) => {
-            return <Song key={index} data={data} />;
+            return <Song search key={index} data={data} />;
         });
     };
     const renderAccountResults = () => {
@@ -135,7 +136,7 @@ function Search({ items = [] }) {
                     spellCheck={false}
                 ></input>
                 <button className={cx('search-btn')} onClick={handleActiveMobile}>
-                    <ion-icon name="search-outline"></ion-icon>
+                    <Icon.Magnifier className={cx('magnifier')} width={24} height={20} />
                 </button>
                 {!!searchValue && !loading && (
                     <button className={cx('clear')} onClick={handleClear}>

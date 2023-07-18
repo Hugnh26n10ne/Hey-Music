@@ -91,15 +91,24 @@
         @media (min-width: $primary-ipad-width) {
             padding: 0 10px 0 10px;
         }
-        ion-icon {
+        svg {
+            max-width: none;
+        }
+        .magnifier {
+            width: 30px;
+            path {
+                stroke: $text-gray;
+            }
             @media (max-width: $primary-mobile-width) {
-                color: $text-white;
+                path {
+                    stroke: white;
+                }
                 opacity: 1;
             }
+
             display: flex;
             justify-content: center;
             align-items: center;
-            color: $text-gray;
             font-size: 28px;
             cursor: pointer;
             opacity: 0.5;
@@ -155,9 +164,11 @@
 
 .box.active {
     .search-btn {
-        ion-icon {
+        .magnifier {
             @media (max-width: $primary-mobile-width) {
-                color: $text-light-black;
+                path {
+                    stroke: $text-light-black;
+                }
             }
         }
         &::before {
@@ -206,7 +217,7 @@
 
 .search-input {
     @media (max-width: ($primary-ipad-width - 200)) {
-        width: 155px !important;
+        width: 215px !important;
     }
     @media (max-width: $primary-mobile-width) {
         display: none;

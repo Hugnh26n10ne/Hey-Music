@@ -1,30 +1,23 @@
 import PropTypes from 'prop-types';
 
-import classNames from 'classnames/bind';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import SongSearch from '~/components/Song/SongSearch';
+import SongList from '~/components/Song/SongList';
 
-import Button from '~/components/Button';
-import styles from './Song.module.scss';
-import Image from '~/components/Image';
+function Song({ search = false, data = {}, play, ...passProp }) {
+    let Cmp = SongList;
 
-const cx = classNames.bind(styles);
+    if (search) {
+        Cmp = SongSearch;
+    } else {
+        Cmp = SongList;
+    }
 
-function Song({ data = {} }) {
-    return (
-        <Button type="icon-text" to={data.to} className={cx('wrapper')}>
-            <FontAwesomeIcon className={cx('arrow-right')} icon={faChevronRight} />
-            <Image className={cx('thumnail')} src={data?.avatar} alt={data?.author} />
-            <div className={cx('info')}>
-                <h5 className={cx('name')}>{data?.name}</h5>
-                <h5 className={cx('author')}>{data?.author}</h5>
-            </div>
-        </Button>
-    );
+    return <Cmp data={data} play={play} {...passProp} />;
 }
 
 Song.propTypes = {
-    data: PropTypes.object.isRequired,
+    search: PropTypes.bool,
+    data: PropTypes.object,
 };
 
 export default Song;

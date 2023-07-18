@@ -56,3 +56,127 @@
         @extend .name;
     }
 }
+
+// Song List
+
+.contents {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    gap: 11px;
+    // width: 393px;
+    width: 100%;
+    height: 57px;
+
+    min-width: auto;
+    padding: 0;
+    border-radius: 0;
+
+    background: transparent;
+}
+
+.contents + .contents {
+    margin-left: 0;
+    margin-top: 15px;
+}
+.contents:hover {
+    .imgs {
+        .cricle {
+            display: block;
+        }
+        .play-img {
+            display: block;
+        }
+    }
+}
+
+.imgs {
+    position: relative;
+    .cricle {
+        display: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        border: 2px solid $bg-white;
+    }
+    .play-img {
+        display: none;
+        position: absolute;
+        left: 22px;
+        top: 22px;
+        overflow: visible;
+    }
+    .img {
+        border-radius: 10px;
+        width: 57px;
+        height: 57px;
+    }
+}
+.content {
+    display: flex;
+    flex-direction: column;
+}
+.name {
+    .title {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        color: $text-white;
+    }
+}
+.box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 150px;
+    color: #fff;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.56px;
+}
+.author {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.dashboard {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 107px;
+    border-radius: 20px 20px 0px 0px;
+    background: #4c0d66;
+    box-shadow: 0px -1px 7px 2px rgba(0, 0, 0, 0.25);
+    z-index: 99;
+    animation: show 0.4s ease-in-out;
+}
+
+@keyframes show {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 0;
+    }
+}
