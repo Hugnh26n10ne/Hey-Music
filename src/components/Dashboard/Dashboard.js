@@ -52,25 +52,35 @@ function Dashboard({ data = {} }) {
                 </div>
                 <div className={cx('control')}>
                     <div className={cx('actions')}>
-                        <Button className={cx('media', 'is-hover-media')}>
+                        <Button className={cx('item', 'is-hover-media')}>
                             <Icon.ShuffleTrack className={cx('icon')} width={27.2} height={27.2} />
                         </Button>
-                        <Button className={cx('media', 'is-hover-media')}>
+                        <Button className={cx('item', 'is-hover-media')}>
                             <Icon.MediaStepBackward className={cx('icon')} width={22} height={22} />
                         </Button>
-                        <Button className={cx('media', 'is-hover-media')}>
+                        <Button className={cx('item', 'is-hover-media')}>
                             <Icon.MusicPlayButton className={cx('icon')} width={43} height={43} />
                         </Button>
-                        <Button className={cx('media', 'is-hover-media')}>
+                        <Button className={cx('item', 'is-hover-media')}>
                             <Icon.MediaStepForward className={cx('icon')} width={22} height={22} />
                         </Button>
-                        <Button className={cx('media', 'is-hover-media')}>
+                        <Button className={cx('item', 'is-hover-media')}>
                             <Icon.RepeatTrack className={cx('icon')} width={27.2} height={27.2} />
                         </Button>
                     </div>
                 </div>
             </div>
-            <div className={cx('media-right')}></div>
+            <div className={cx('media-right')}>
+                <Button className={cx('item', 'is-hover-media')}>
+                    <Icon.MusicExpandButton className={cx('icon')} width={22} height={22} />
+                </Button>
+                <Button className={cx('item', 'is-hover-media')}>
+                    <Icon.VolumButton className={cx('icon')} width={22} height={22} />
+                </Button>
+                <Button className={cx('item', 'is-hover-media')}>
+                    <Icon.PlayListButton className={cx('icon')} width={25} height={25} />
+                </Button>
+            </div>
         </div>
     );
 }
